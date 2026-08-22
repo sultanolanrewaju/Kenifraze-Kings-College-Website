@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react"
 import { useAcademics } from "../../hooks/useAcademics.js"
-import axios from "axios"
+import { toast } from "sonner"
 import Navbar from "../Components/Navbar"
 import Hero from "../Components/Hero"
 import Footer from "../Components/Footer"
@@ -10,13 +10,22 @@ import Novalue from "../Components/Novalue.jsx"
 import Loader from "../Components/Loader.jsx"
 
 const Academics = ()=>{
-  const [loading,setLoading]= useState(true)
-  const {data:academics,isloading} = useAcademics();
-if(isloading){
-  return(
-    <Loader/>
-  )
-}
+  const [category,setCategory] =useState("")
+     // Tanstack query APi calls
+    const {
+        data:academics,
+        isLoading:isLoadingAcademics,
+        isError:isErroracademics
+    } = useAcademics(category);
+
+
+     // Trigger error toasts safely using useEffect (prevents infinite re-renders)
+  useEffect(() => {
+    if (isErroracademics) {
+      toast.error("Failed to load academics Post.")
+    }
+  }, [isErroracademics])
+
  return (
 <>
 <Navbar/>
@@ -27,27 +36,29 @@ if(isloading){
 <section className="activities">
 <div className="categories">
   <div className="category">
-   <a href="#">Curriculum</a>
+  <a href="#" onClick={()=>{setCategory("Curriculum")}}>Curriculum  </a>
   </div>
-   <div className="category">
-    <a href="#">Announcement</a>
+
+   <div className="category"  onClick={()=>{setCategory("Announcement")}}>
+    <a href="#" onClick={()=>{setCategory("Announcement")}}>Announcement</a>
    </div>
     <div className="category">
-      <a href="#">Admission</a>
+      <a href="#" onClick={()=>{alert("Hey")}}>Admission</a>
     </div>
 </div>
   <div className="activities-grid">
-   {
-    academics?.map((academic) => (
-      <Card
-        key={academic._id}
-        img={academic.ImageUrl}
-        title={academic.title}
-        desc={academic.description}
-      />
-    ))
-  
- }
+   {   isLoadingAcademics ?(
+<Loader/>
+): academics?.length > 0 ?(
+    academics?.map((academic)=>{
+        return(
+ <Card key={academic._id} img={academic.ImageUrl} title={academic.title} desc={academic.description}/>
+        )
+    })
+):(
+<Novalue value="Academic Post"/>
+)
+}
 {/* 
        <Card img="./IMAGES/science.jfif" title="Science Club" desc="Encouraging curiosity and innovation through experiments, projects and exhibitions."/>
        <Card img="./IMAGES/singing_student.png" title="Music & Drama" desc="    Nurturing creativity and expression through music,dance and stage performances."/>

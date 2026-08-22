@@ -1,204 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmed | Payment Success</title>
-    
-    <!-- Fancybox v5 CSS CDN (Optional: Only if you want to launch it inside a popup modal) -->
-    <link rel="stylesheet" href="https://jsdelivr.net"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Oakridge Academy</title>
+  
+  <style>
+    /* Base Styles & CSS Variables */
+    :root {
+      --primary-color: #0d3b66;
+      --accent-color: #f4d35e;
+      --secondary-color: #f7fff7;
+      --text-color: #2b2d42;
+      --text-muted: #6c757d;
+      --light-bg: #f8f9fa;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-    <style>
-        /* Base Page Configurations */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f3f4f6;
-            color: #1f2937;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Success Card Wrapper */
-        .success-card {
-            background: #ffffff;
-            max-width: 480px;
-            width: 100%;
-            border-radius: 20px;
-            padding: 40px 32px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+      font-family: var(--font-main);
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: #fff;
+    }
 
-        /* Animated Banner Accents */
-        .success-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #10b981, #34d399);
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        /* Animated Success Checkmark Ring */
-        .icon-container {
-            width: 72px;
-            height: 72px;
-            background-color: #ecfdf5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px auto;
-            color: #10b981;
-            animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-        .icon-container svg {
-            width: 36px;
-            height: 36px;
-        }
+    /* Circular Image Helper */
+    .circular-img {
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
 
-        /* Typography */
-        .success-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #111827;
-            margin: 0 0 8px 0;
-        }
-        .success-subtitle {
-            font-size: 0.95rem;
-            color: #6b7280;
-            margin: 0 0 32px 0;
-            line-height: 1.5;
-        }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(13, 59, 102, 0.85), rgba(13, 59, 102, 0.85)), url('hero-bg.jpg') center/cover no-repeat;
+      color: #fff;
+      padding: 5rem 0;
+      text-align: center;
+    }
 
-        /* Structured Invoice/Receipt Breakdowns */
-        .receipt-panel {
-            background-color: #f9fafb;
-            border: 1px solid #f3f4f6;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 32px;
-            text-align: left;
-        }
-        .receipt-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-        .receipt-row:last-child {
-            margin-bottom: 0;
-            padding-top: 12px;
-            border-top: 1px dashed #e5e7eb;
-        }
-        .label {
-            color: #6b7280;
-        }
-        .value {
-            font-weight: 600;
-            color: #1f2937;
-        }
-        .value.amount {
-            font-size: 1.15rem;
-            color: #111827;
-            font-weight: 700;
-        }
+    .hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 0.75rem;
+    }
 
-        /* Call To Action Buttons */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .btn-primary {
-            background-color: #111827;
-            color: #ffffff;
-            border: none;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            background-color: #000000;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: #4b5563;
-            border: 1px solid #e5e7eb;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        .btn-secondary:hover {
-            background-color: #f9fafb;
-            color: #111827;
-        }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        /* Simple Intro Scale Animation */
-        @keyframes scaleIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-    </style>
+    /* Welcome Section */
+    .welcome-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .welcome-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .welcome-text .subheading {
+      text-transform: uppercase;
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .welcome-text h2 {
+      font-size: 2rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .welcome-text p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .welcome-text .signature {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 1.5rem;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 3rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
+
+    .stat-item p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Guiding Pillars */
+    .pillars-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .pillar-card {
+      background: var(--light-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .pillar-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--primary-color);
+    }
+
+    /* Call to Action */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background-color: var(--secondary-color);
+      border-radius: 12px;
+      margin-bottom: 4rem;
+    }
+
+    .cta-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.75rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .primary-btn {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    .secondary-btn {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+    }
+
+    /* Responsive Media Queries */
+    @media (min-width: 768px) {
+      .welcome-grid {
+        flex-direction: row;
+        text-align: left;
+      }
+      
+      .welcome-image {
+        flex-shrink: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Main Payment Success Card Frame -->
-    <div class="success-card">
-        
-        <!-- SVG Success Vector Icon -->
-        <div class="icon-container">
-            <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d=" Vector M4.5 12.75l6 6 9-13.5" />
-            </svg>
-        </div>
-
-        <h1 class="success-title">Payment Successful!</h1>
-        <p class="success-subtitle">Thank you for your purchase. Your transaction has been completed and a receipt was sent to your email.</p>
-
-        <!-- Dynamic Invoice Panel Details -->
-        <div class="receipt-panel">
-            <div class="receipt-row">
-                <span class="label">Payment Status</span>
-                <span class="value" style="color: #10b981;">Completed</span>
-            </div>
-            <div class="receipt-row">
-                <span class="label">Transaction ID</span>
-                <span class="value">#TXN-9824107</span>
-            </div>
-            <div class="receipt-row">
-                <span class="label">Payment Method</span>
-                <span class="value">Credit Card (•••• 4242)</span>
-            </div>
-            <div class="receipt-row">
-                <span class="label">Amount Paid</span>
-                <span class="value amount">$49.00</span>
-            </div>
-        </div>
-
-        <!-- Navigation Context Closures -->
-        <div class="btn-group">
-            <a href="/dashboard" class="btn-primary">Go to Dashboard</a>
-            <a href="/receipt/download" class="btn-secondary">Download PDF Receipt</a>
-        </div>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1>About Oakridge Academy</h1>
+      <p>Empowering minds, inspiring character, and building tomorrow's leaders since 1995.</p>
     </div>
+  </header>
+
+  <main>
+    <!-- Welcome Message Section -->
+    <section class="welcome-section container">
+      <div class="welcome-grid">
+        <div class="welcome-image">
+          <img src="principal.jpg" alt="Principal Dr. Elena Vance" class="circular-img">
+        </div>
+        <div class="welcome-text">
+          <span class="subheading">Welcome from the Principal</span>
+          <h2>A Heritage of Excellence</h2>
+          <p>Welcome to Oakridge Academy. For over three decades, our dedicated faculty and vibrant community have provided a nurturing environment where academic rigor meets holistic personal development. We believe every student possesses unique potential waiting to be unlocked.</p>
+          <p class="signature">— Dr. Elena Vance, Head of School</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Statistics Bar -->
+    <section class="stats-bar">
+      <div class="container stats-grid">
+        <div class="stat-item">
+          <h3>12:1</h3>
+          <p>Student-Teacher Ratio</p>
+        </div>
+        <div class="stat-item">
+          <h3>98%</h3>
+          <p>College Acceptance Rate</p>
+        </div>
+        <div class="stat-item">
+          <h3>35+</h3>
+          <p>Extracurricular Clubs</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Dedicated Faculty</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & Values -->
+    <section class="pillars-section container">
+      <div class="section-title">
+        <h2>Guiding Pillars</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3>Our Mission</h3>
+          <p>To cultivate intellectual curiosity, ethical leadership, and creative problem-solving in a diverse and inclusive environment.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>Our Vision</h3>
+          <p>To be a global benchmark in transformative K-12 education, shaping compassionate leaders who make a positive impact.</p>
+        </div>
+        <div class="pillar-card">
+          <h3>Our Core Values</h3>
+          <p>Integrity, Innovation, Respect, Empathy, and a lifelong commitment to personal and academic Excellence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta-section container">
+      <h2>Ready to Join Our Community?</h2>
+      <p>Discover how Oakridge Academy can shape your child's future.</p>
+      <div class="cta-buttons">
+        <a href="#schedule-tour" class="btn primary-btn">Schedule a Tour</a>
+        <a href="#apply" class="btn secondary-btn">Apply Now</a>
+      </div>
+    </section>
+  </main>
 
 </body>
 </html>

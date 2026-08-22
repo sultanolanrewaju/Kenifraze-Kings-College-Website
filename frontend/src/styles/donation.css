@@ -26,6 +26,9 @@
         .kkcf-wrapper *::after {
             box-sizing: border-box;
         }
+        body{
+            background: var(--kkcf-dark);
+        }
 
         /* UTILITIES */
         .kkcf-container {
@@ -88,7 +91,7 @@
 
         /* HERO SECTION */
         .kkcf-hero-section {
-            background: linear-gradient(135deg, var(--kkcf-primary) 0%, #312E81 100%);
+            background: linear-gradient(135deg, var(--kkcf-primary) 0%,#34345B 100%);
             color: #ffffff;
             padding: 80px 0;
             text-align: center;
@@ -132,7 +135,7 @@
             flex-wrap: wrap;
         }
         .kkcf-btn-primary {
-            background-color: var(--kkcf-secondary);
+            background-color:#F55A28;
             color: #ffffff;
             font-size: 18px;
             font-weight: 700;
@@ -394,20 +397,26 @@
         }
 
         /* CHECKOUT FORM */
+        .form-heading{
+            text-align: center;
+            position: relative;
+            top: 50px ;
+        }
         .kkcf-form-box {
-            background-color: #ffffff;
+            background-color:var();
             color: var(--kkcf-dark);
             max-width: 550px;
             margin: 0 auto;
             border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.5);
         }
         .kkcf-form-title {
             font-size: 20px;
             font-weight: 700;
             text-align: center;
             margin: 0 0 4px 0;
+            color:#1F2937;
         }
         .kkcf-form-subtitle {
             font-size: 14px;
@@ -476,15 +485,46 @@
         .kkcf-btn-submit:hover {
             background-color:#4338CA;;
         }
-        .kkcf-secure-tag {
+        .kkcf-secure-tag{
             font-size: 12px;
-            color: var(--kkcf-text-light);
+            color:#37383a;
             text-align: center;
             margin-top: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
+        }
+        .valid{
+            font-size:20px;
+            text-align: center;
+            /* padding: 2px; */
+            position: absolute;
+            top:45%;
+            left:32%;
+            width: 450px;
+            height:25px;
+            border-radius:10px;
+            border: 2px solid red;
+        }
+        .hide{
+            display: none;
+        }
+        .international{
+            position: relative;
+            top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 50px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: white;
+            background: #F55A28;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+           cursor: pointer;
         }
 
         /* FOOTER */

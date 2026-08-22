@@ -11,16 +11,20 @@ const Eventcard = (props)=>{
             <img src={current_image} alt="Graduation Ceremony" onClick={()=>{setActiveImage(current_image)}}/>
 
             <div className="event-content">
-                <div className="event-date">
-                  {props.date}
+               <div className="event-info">
+                 <div className="event-date">
+                 <b>Date:</b> {props.date}
                 </div>
-
+                <div className="event-date">
+                 <b>Venue :</b><span style={{paddingLeft:"5px"}}>{props.location}</span>
+                </div>
+               </div>
+                
                 <h3>{props.title}</h3>
 
                 <p>
                 {props.desc}
                 </p>
-                <a href="#">Read More →</a>
             </div>
         </div>
 

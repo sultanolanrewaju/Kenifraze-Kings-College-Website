@@ -7,10 +7,11 @@ import  "../styles/donation.css"
 import Navbar from "../Components/Navbar"
 import DonationCard from "../Components/DonationCard"
 import NeedCard from "../Components/NeedCard"
+import { donationTier } from "../libs/data"
 // Icons
 import { AiOutlineFork,AiOutlineBook } from "react-icons/ai"
 const Donation = () => {
- 
+
 
 
   return (
@@ -92,15 +93,12 @@ const Donation = () => {
                         Although our impact continues to grow, so do our needs. The foundation empowers young people to discover their talents, develop confidence, and pursue careers in theater, music, television, film, dance, and higher education.
                     </p>
                     <p className="kkcf-needs-p">
-                        Every dollar donated directly supports the children and ensures they continue receiving life-changing educational opportunities.
+                        Every cash donated directly supports the children and ensures they continue receiving life-changing educational opportunities.
                     </p>
-                    <a href="#kkcf-donate-form-section" className="kkcf-needs-link">
-                        Review Donation Options <i className="fa-solid fa-arrow-right"></i>
-                    </a>
                 </div>
                 
                 <div className="kkcf-needs-grid">
-                  <NeedCard Icon={<AiOutlineFork/>} title="Daily Meals" desc="Daily school meals provided through our Lunch Program."/>
+                  <NeedCard Icon={<AiOutlineFork/>} title="Equipment" desc="Laboratory Equipemts to perform experiments that explain topic beyond the textbooks."/>
                   <NeedCard Icon={<AiOutlineBook/>}  title="Books & Gear" desc="Books, educational materials, and classroom supplies."/>
                   <NeedCard Icon={""} title="Instruments" desc="Musical instruments and performing arts equipment."/>
                   <NeedCard Icon={""} title="Safe Spaces" desc="Annual school lease, operational expenses, and logistics."/>
@@ -117,14 +115,18 @@ const Donation = () => {
                 
                 {/* <!-- Tiers --> */}
                 <div className="kkcf-tiers-grid">
+                    {
+                        donationTier.map((donation)=>{
+                            return(
+                            <DonationCard key={donation.id} amount={donation.amount}  title={donation.title} desc={donation.desc}/>
+                            )
+                        })
+                    }
+   <div className="international">Pay in Dollar</div>
+                  </div>
                   
-
-                          {/* <DonationCard amount="$25" title="Supplies" desc="Provides educational supplies for a student."/> */}
-                           <DonationCard amount="$50" title="Arts" desc="Helps purchase music and performing arts materials."/>
-                           <DonationCard amount="$100" title="Lunch Program" desc="Supports nutritious meals for children through the school lunch program."/>
-                           <DonationCard amount="$250" title="Travel" desc="Helps fund student travel for educational and community performances"/>
-                </div>
 </div>
+
         </section>
 
        

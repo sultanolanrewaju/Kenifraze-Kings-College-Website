@@ -1,4 +1,5 @@
 import {Routes,Route} from "react-router-dom"
+import { Toaster } from "sonner"
 import { useQuery } from "@tanstack/react-query"
 import Home from "./Pages/Home"
 import About from "./Pages/About"
@@ -11,6 +12,19 @@ function App() {
 
   return (
     <>
+    <Toaster position="top-center"  richColors
+    toastOptions={{
+          style: {
+            display: "flex !important",
+    justifyContent: "center !important",
+            width: '380px !important',
+            minHeight: '50px',
+            fontSize: '20px ',
+            padding: '18px 24px !important',
+              textAlign: "center"
+          },
+        }}/>
+
     <Routes>
       <Route path="/" element={ <Home/>}/>
       <Route path="/about" element={ <About/>}/>

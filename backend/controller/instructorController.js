@@ -31,7 +31,7 @@ try {
 
 
 
-export const postInstructor = (upload.single("image"),async(req,res)=>{
+export const postInstructor = (upload.single("ImageUrl"),async(req,res)=>{
 try {
      const {name,subject,bio,ImageUrl} = req.body;
        const imageUrl = req.file ? req.file.path : null;
@@ -72,7 +72,11 @@ export const patchInstructor = async(req,res)=>{
   try {
     const Id = req.params.id;
     const {name,subject,bio,ImageUrl} = req.body;
-    const findInstructor = await Instructor.findById(Id)
+    const findInstructor = await Instructor.findByIdAndUpdate(
+      Id,
+      {$set:req.body},
+      {returnDocument:"after"}
+    )
    
     if(!findInstructor){
       return res.status(404).send("Instructor not found")
@@ -82,7 +86,7 @@ export const patchInstructor = async(req,res)=>{
     res.status(200).json(updatedInstructor)
   } catch (error) {
     res.status(500).send("Error in Patch Instructor Controller",error)
-    console.error("Error in Patch Instructor Controller",error)
+    console.error(`Error in Patch Instructor Controller: ${error}`)
   }
 }
 

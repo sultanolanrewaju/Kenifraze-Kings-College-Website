@@ -1,3 +1,0 @@
-POST http://localhost:3000/api/upload
-Content-Type: multipart/form-data
-Pictures/yagami.jpg

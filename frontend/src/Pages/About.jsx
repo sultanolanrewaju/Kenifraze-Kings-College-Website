@@ -1,21 +1,30 @@
 import { useState,useEffect } from "react"
-import axios from "axios"
+import { useInstructor } from "../../hooks/useInstructor.js"
+import {toast} from "sonner"
+// Components
 import NavBar from "../Components/Navbar"
 import Footer from "../Components/Footer"
 import Hero from "../Components/Hero"
 import InstructorCard from "../Components/InstructorCard"
-import "../styles/About.css";
 import Novalue from "../Components/Novalue.jsx"
 import Loader from "../Components/Loader.jsx"
-import { useInstructor } from "../../hooks/useInstructor.js"
+// Styles
+import "../styles/About.css";
 const About = ()=>{
     // Making API Calls
-    const {data:instructors,isloading}= useInstructor();
-    if(isloading){
-        return(
-            <Loader/>
-        )
+    const {
+        data:instructors,
+        isLoading:isLoadingTeacher,
+        isError:isErrorTeacher
+    }= useInstructor();
+ 
+useEffect(()=>{
+    if(isErrorTeacher){
+            toast.error("Error Fetching Teachers Data")
     }
+},[isErrorTeacher])
+
+
  return (
 <>
 <NavBar/>
@@ -46,14 +55,16 @@ const About = ()=>{
             </div>
 
             <div className="faculty-grid">
-               {instructors?.length === 0 ? (
-                <Novalue value="Teacher"/>
-             ):(
+               { isLoadingTeacher ?(
+               <Loader/>
+               ):instructors?.length > 0 ? (
                    instructors?.map((teacher)=>{
-                    return (
-                    <InstructorCard key={teacher._id} img={teacher.ImageUrl} name={teacher.name} subject={teacher.subject} bio={teacher.bio} />
-                    )
-                })
+                       return (
+                           <InstructorCard key={teacher._id} img={teacher.ImageUrl} name={teacher.name} subject={teacher.subject} bio={teacher.bio} />
+                        )
+                    })
+                ):(
+                 <Novalue value="Teacher"/>
              )
                }
             </div>

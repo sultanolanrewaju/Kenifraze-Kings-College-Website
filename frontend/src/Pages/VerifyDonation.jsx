@@ -3,14 +3,17 @@ import { useSearchParams,useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Loader from "../Components/Loader"
+import API_BASE_URL from '../libs/api'
 // Styles
 import  "../styles/verify.css"
 const VerifyDonation = () => {
     const [searchparams] = useSearchParams();
     const [status,setStatus] = useState("Verifying payment please wait....");
+    const [name,setName]= useState("")
     const [references,setReferences] = useState("")
     const [donation,setDonation] = useState(null)
     const [amount,setAmount] = useState("null")
+    const [email,setEmail] = useState("")
     const [loading,setLoading] = useState(true)
     const navigate = useNavigate()
     // Extract refrence number from paystack
@@ -19,27 +22,30 @@ const VerifyDonation = () => {
     useEffect(()=>{
         const verifyPayment = async()=>{
             if (!reference) {
-                setReferences("No  reference Number Found");
+                setReferences("No reference Number Found");
                 setLoading(false)
                 return;
             }
 
             try {
                 // Call Backend in order to update status
-                const APicalls = await axios.get(`http://localhost:5000/api/payment/donate/verify/${reference}`);
-                setDonation(APicalls.data.donation)
-                console.log(donation);
-                console.log(APicalls.status);
-                setAmount(APicalls.amount)
+                const APicalls = await axios.get(`${import.meta.env.VITE_DEVELOPMENT}/api/payment/donate/verify/${reference}`);
+                console.log(APicalls.data)
+                const Base = APicalls?.data?.donation;
+                setAmount(Base.amount)
+                setReferences(Base.reference)
+                setName(Base.donorfName + " "  + Base.donorlName)
+                setEmail(Base.email)
+                console.log(Base.amount);
                 if (APicalls.status === 200) {
-                    setStatus("Payment Verified Successfully.Thanks for your Donation")
-                   setTimeout(()=>{ navigate("/")},4000)
+                    setStatus(Base.status)
+                //    setTimeout(()=>{ navigate("/")},4000)
                 }else if(APicalls.status(404)){
                     setStatus("Failed")
                 }
             } catch (error) {
                 console.error(`Error making donation ${error}`)
-                setStatus(error.response?.data?.error || "Verification")
+                setStatus(error.response?.data?.error || "FAILED")
             }finally{
                 setLoading(false)
             }
@@ -73,6 +79,14 @@ const VerifyDonation = () => {
                     <div className="receiptRow">
                         <span className="label">Payment Status</span>
                         <span className="value" style={{ color: '#10b981' }}>{status}</span>
+                    </div>
+                     <div className="receiptRow">
+                        <span className="label">Sender's Name</span>
+                        <span className="value">{name}</span>
+                    </div>
+                     <div className="receiptRow">
+                        <span className="label">Sender's Email</span>
+                        <span className="value">{email}</span>
                     </div>
                     <div className="receiptRow">
                         <span className="label">Transaction ID</span>

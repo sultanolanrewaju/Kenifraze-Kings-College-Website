@@ -24,6 +24,8 @@ dist/
 build/
 out/
 
+se
+
 # React build
 client/build/
 frontend/build/

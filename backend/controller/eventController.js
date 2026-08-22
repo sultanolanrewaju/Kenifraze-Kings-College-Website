@@ -18,11 +18,13 @@ export const getOneEvent = async(req,res)=>{
   try {
   
       const Id = req.params.id;
-    const FoundEvent = await Event.findOne({_id:req.params.id})
+      console.log(Id);
+      
+    const FoundEvent = await Event.findOne({_id:Id})
     if (!FoundEvent) {
       return res.status(404).json({ error: "Event not found" });
     }else{
-      console.log("Found Event:", FoundEvent);
+      // console.log("Found Event:", FoundEvent);
       res.status(200).send(FoundEvent)   
   } 
 }catch (error) {
@@ -99,7 +101,7 @@ export const patchEvent= async(req,res)=>{
   try{
     const Id = req.params.id;
   const {title,description,date,location} = req.body;
-   const findEvent = await Event.findById(Id)
+   const findEvent = await Event.findByIdAndUpdate(Id)
    if(!findEvent){
     return res.status(404).send("Event not found")
    }
@@ -122,7 +124,7 @@ export const patchEvent= async(req,res)=>{
 export const deleteOneEvent = async(req,res)=>{
   try {
     const Id = req.params.id;
-    const DeletedEvent = await Event.deleteOne({_id:Id}) 
+    const DeletedEvent = await Event.deleteOne(Id) 
     res.status(200).send("Event Deleted Successfully !!!")
   } catch (error) {
     res.send("Error deleting event : " + error)

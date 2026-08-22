@@ -20,18 +20,18 @@ export const getDonor = async(req,res)=>{
       query.$or = [
         {donorfName :{$regex:search,$options:"i"}},
         {donorlName :{$regex:search,$options:"i"}},
-        {email :{$regex:search,Option:"i"}},
-        {reference :{$regex:search,Option:"i"}},
+        {email :{$regex:search,$options:"i"}},
+        {reference :{$regex:search,$options:"i"}},
       ]
     }
 
     // Skip previous pages and fetch limited records
     const skip = (page - 1) * limit;
-    const Finddonor = await Donation.find().sort({createdAt: -1 }).skip(skip).limit(limit)
+    const Finddonor = await Donation.find(query).sort({createdAt: -1 }).skip(skip).limit(limit)
   res.status(200).json(Finddonor)
   } catch (error) {
     console.log("Error :" + error)
-    res.send(500).send("Error in getting Donor")
+    res.status(500).send("Error in getting Donor")
   }
 }
 
@@ -54,12 +54,12 @@ export const initializeDonation = async (req, res) => {
 
     // Call Paystack API
     const paystackResponse = await axios.post(
-      'https://api.paystack.co/transaction/initialize',
+      `${process.env.PAYSTACK_URL}transaction/initialize`,
       {
         email,
         amount: amountInKobo,
+        callback_url: process.env.FRONTEND_URL || "localhost:5173/verify", // React redirect page
         metadata: {  donorfName,donorlName },
-     callback_url: process.env.VITE_URL // React redirect page
       },
       {
         headers: {
@@ -83,6 +83,7 @@ export const initializeDonation = async (req, res) => {
 
     // Send redirect URL back to React frontend
     res.status(200).json({ authorization_url, reference });
+console.log(process.env.FRONTEND_URL);
 
   } catch (error) {
     console.error("Paystack Init Error:", error.response?.data || error.message);
@@ -107,7 +108,7 @@ export const verifyDonation = async (req, res) => {
 
     // Call Paystack to verify status directly with their servers
     const paystackResponse = await axios.get(
-      `https://api.paystack.co/transaction/verify/${reference}`,
+      `${process.env.PAYSTACK_URL}transaction/verify/${reference}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TEST_PAYSTACK_SECRET_KEY}`,
@@ -134,6 +135,7 @@ export const verifyDonation = async (req, res) => {
         paidAt:paid_at,
         }
       });
+    }else{
       return res.status(400).json({ error: "Payment verification failed or was abandoned." });
     
     } 

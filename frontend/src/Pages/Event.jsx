@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { useEvents } from "../../hooks/useEvents.js"
+import { toast } from "sonner"
 import Navbar from "../Components/Navbar"
 import Hero from "../Components/Hero"
 import Eventcard from "../Components/Eventcard"
@@ -14,13 +14,22 @@ const Event = () => {
     const [loading, setLoading] = useState(true) // 1. Start loading as true initially
 
         // Uses the useEvents hook to fetch events with a limit of 5
-        const {data:events,isLoading} = useEvents()
+  const {data:events,
+        isLoading:isLoadingEvents,
+        isError:isErrorEvents,
+        } = useEvents()
 
-
+       
+         useEffect(() => {
+    if (isErrorEvents) {
+      toast.error("Failed to load events.")
+    }
+  }, [isErrorEvents])
+   
     return (
         <>
             <Navbar />
-            <Hero />
+            {/* <Hero /> */}
             <section className="events">
                 <div className="section-header">
                     <span>RECENT EVENTS</span>
@@ -34,15 +43,19 @@ const Event = () => {
                 {/* 3. Conditional rendering in the JSX tree */}              
                   {
                     <div className="events-grid">
-                        {events?.map((event) => (
-                            <Eventcard 
-                                key={event._id} // 4. MongoDB uses _id instead of id
-                                img={event.ImageUrl} 
-                                date={event.date} 
-                                title={event.title} 
-                                desc={event.description}
-                            />
-                        ))}
+                         {
+        isLoadingEvents ?(
+            <Loader/>
+        ): events?.length > 0 ?(                                 
+        events?.map((event)=>{
+            return(
+<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={event.description} location={event.location}/>
+            )
+        })
+    ):(
+        <Novalue value="Events"/>
+    )
+    }
                     </div>
 }
             </section>

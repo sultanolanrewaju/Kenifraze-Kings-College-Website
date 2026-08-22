@@ -1,4 +1,6 @@
+import { useState,useEffect } from "react"
 import {Link} from "react-router-dom"
+import {toast} from "sonner"
 import { useEvents } from "../../hooks/useEvents"
 import {useAcademics } from "../../hooks/useAcademics"
 import Navbar from "../Components/Navbar"
@@ -12,26 +14,43 @@ import Entertain from "../Components/Entertain"
 import Loader from "../Components/Loader"
 import Novalue from "../Components/Novalue"
 const Home = ()=>{
-
+    const [category,setCategory] = useState("")
+// Set Loading State
+const [loading,setLoading] = useState(true)
     // Tanstack query APi calls
-    const {data:academics,isLoadingAcademics} = useAcademics()
-    const {data:events,isLoading} = useEvents()
+    const {
+        data:academics,
+        isLoading:isLoadingAcademics,
+        isError:isErroracademics
+    } = useAcademics(category);
+
+        // Events Hook
+    const {data:events,
+        isLoading:isLoadingEvents,
+        isError:isErrorEvents,
+        } = useEvents()
     // console.log(data,data);
     
     // Limited API data
-     const limitedEvents = events?.slice(0, 3) //Limit of the Shown events
-     const limitedAcademics = academics?.slice(0, 3) //Limit of the shown Acadermic Post
-    //  Setting Loading State
-    if(isLoading){
-        return(
-       <Loader/>
-        )
+     const limitedEvents = (events ||[]).slice(0, 3)  //Limit of the Shown events
+     const limitedAcademics = (academics || []).slice(0, 3) //Limit of the shown Acadermic Post
+
+
+    //  Handle Error
+    // Trigger error toasts safely using useEffect (prevents infinite re-renders)
+  useEffect(() => {
+    if (isErroracademics) {
+      toast.error("Failed to load academics Post.")
     }
-      if(isLoadingAcademics){
-        return(
-       <Loader/>
-        )
+  }, [isErroracademics])
+
+  useEffect(() => {
+    if (isErrorEvents) {
+      toast.error("Failed to load events.")
     }
+  }, [isErrorEvents])
+    
+   
     const handleShow = (event)=>{
         // alert("event.target.value")
         console.log("nnn");
@@ -104,12 +123,19 @@ const Home = ()=>{
 {/* Card */}
   <div className="activities-grid">
 {
-   limitedAcademics.map((academic)=>{
+isLoadingAcademics ?(
+<Loader/>
+): limitedAcademics.length > 0 ?(
+    limitedAcademics?.map((academic)=>{
         return(
- <Card key={academic._id} img={academic.ImageUrl} title={academic.title} content={academic.description}/>
+ <Card key={academic._id} img={academic.ImageUrl} title={academic.title} desc={academic.description}/>
         )
     })
+):(
+<Novalue value="Academic Post"/>
+)
 }
+   
 
 
 </div>
@@ -135,19 +161,22 @@ const Home = ()=>{
 
  <div className="events-grid">
     {
-        limitedAcademics.length === 0 ?
-            <Novalue/>
-        :
+        isLoadingEvents ?(
+            <Loader/>
+        ): limitedEvents.length > 0 ?(                                 
         limitedEvents?.map((event)=>{
             return(
-
-<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={event.description}/>
+<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={event.description} location={event.location}/>
             )
         })
+    ):(
+        <Novalue value="Events"/>
+    )
     }
+    
  </div>
  <div className="activity-btn">
-        <Link to="/events">View All Activities</Link>
+        <Link to="/events">View All Events</Link>
     </div>
     </section>
 

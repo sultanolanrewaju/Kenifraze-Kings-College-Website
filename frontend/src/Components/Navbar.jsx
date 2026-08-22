@@ -20,7 +20,7 @@ const Navbar = ()=>{
         {/* <li><a href="/">Contact</Link></li> */}
     </ul>
     <div>   
-         <Link to="/donation"> <button className={toggle ? "donate" : "hide"}>Donate Now</button></Link>
+         <Link to="/donation"> <button className={toggle ? "donate" : "hide"}>Academic program</button></Link>
     </div>
     <div className="menu">
         <AiOutlineMenu size={"30px"} className="burger"  onClick={handleClick}/>

@@ -1,19 +1,27 @@
-import academic from "../models/AcademicModel.js"
+import academic from "../models/AcademicModel.js"   //Importing the Academic Model
 
-// Getting All Academic
+// Getting All Academic post
 
 export const getAcademic = async(req,res)=>{
    try {
       // Check Limit
+         const Category = req.query.category;
+
+      let query = {}
+
+      if(Category && Category !== "all"){
+         query.category = Category;
+      }
+  
       const limit = req.query.limit ? Number(req.query.limit) : 0;
-     const FindAcademic = await academic.find().sort({createdAt: -1}).limit(limit)
+     const FindAcademic = await academic.find(query).sort({createdAt: -1}).limit(limit)
     res.status(200).json(FindAcademic)
    } catch (error) {
    res.status(500).send("Error in Get Academic Controller")
 }
 }
 
-// Getting specific Academic
+// Getting specific Academic Post
 
 export const getOneAcademic = async(req,res)=>{
    try {

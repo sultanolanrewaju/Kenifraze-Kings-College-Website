@@ -1,9 +1,13 @@
 import React from 'react'
 import axios from "axios"
+import Navbar from './Navbar'
 import { useState } from 'react'
 // Styles
 import  "../styles/donation.css"
+import { toast } from 'sonner'
 const DonationForm = () => {
+    const [error,setError] = useState("")
+    const [showmsg,setShowmsg] = useState(false)
         // Payment Data
     const[formdata,setFormData] = useState({
         donorfName:"",
@@ -11,6 +15,7 @@ const DonationForm = () => {
         email:"",
         amount:"",
     })
+   
     const [loading,setLoading] = useState(false)
    
     const handleChange = (e)=>{
@@ -19,15 +24,18 @@ const DonationForm = () => {
     
     };
      const handleDonate = async (e) =>{
-        e.preventDefault();
-        setLoading(true);
-
-    try {
-        const payload = {
-
+         e.preventDefault();
+         setLoading(true);
+         
+         try {
+        if(formdata.donorfName || formdata.donorlName || formdata.email || formdata.amount === ""){
+            setShowmsg(true)
         }
+        // const payload = {
+
+        // }
         // Call the payment API
-        const response =  await axios.post("http://localhost:5000/api/payment/donate/initialize",formdata);
+        const response =  await axios.post(`${import.meta.env.VITE_LIVE_URL}/api/payment/donate/initialize`,formdata);
         const {authorization_url,reference} = response.data;
    
         //  Redirect User to Checkout Page
@@ -35,13 +43,19 @@ const DonationForm = () => {
 
     } catch (error) {
         console.error("Initializing error",error);
-        alert(error.response?.data?.error || "Failed to initialize payment")
+        toast.error("No Internet Connection")
+        // alert(error.response?.data?.error || "Failed to initialize payment")
     }finally{
         setLoading(false)
     }
 };
   return (
    <>
+   <Navbar/>
+   <h1 className='form-heading'>Help Build The future Leaders with your support </h1>
+   <div className={showmsg ? "valid":"hide"}>
+    <span>All field are required</span>
+   </div>
     <section id="kkcf-donate-form-section" className="kkcf-section-donation">
             <div className="kkcf-container">
                 <div className="kkcf-form-box">
@@ -52,7 +66,7 @@ const DonationForm = () => {
                         <div className="kkcf-form-group">
                             <label className="kkcf-form-label">Gift Amount ($ USD)</label>
                             <div className="kkcf-input-wrapper">
-                                <span className="kkcf-input-icon">$</span>
+                                <span className="kkcf-input-icon">₦</span>
                                 <input type="number" name="amount" value={formdata.amount} onChange={handleChange} id="kkcfInputAmount"  className="kkcf-input-amount"/>
                             </div>
                         </div>
@@ -76,7 +90,7 @@ const DonationForm = () => {
                         <button type="submit" className="kkcf-btn-submit">{loading ? "Initializing.." : "Proceed to Pay"}</button>
                         
                         <div className="kkcf-secure-tag">
-                            <i className="fa-solid fa-lock text-green-500"></i> Secure context enabled.
+                            <i className="fa-solid fa-lock text-green-500" style={{color:"red"}}></i> Secure context enabled.
                         </div>
                     </form>
                 </div>

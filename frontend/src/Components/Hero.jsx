@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai"
 const slidesData = [
 	{
 		src: "./IMAGES/group_photo.jpg",
@@ -7,7 +7,7 @@ const slidesData = [
 		title: "Welcome to KKC",
 		description: "Inspiring excellence and leadership for a brighter future."
 		,btnText : "Explore Our Campus",
-		btnLink : ""
+		btnLink : "http://www.youtube.com"
 	    
 	},
 	{
@@ -110,17 +110,17 @@ const Hero = () => {
 							<div className='slide-content'>
 								<h2>{slide.title}</h2>
 								<p>{slide.description}</p>
-                                                                <button onMouseMove={()=>{alert("Done")}}>{slide.btnText}</button>
+                                     <button>{slide.btnText}</button>
 							</div>
 						</div>
 					))}
 				</div>
 
 				<button className='carousel-btn prev' onClick={prevSlide}>
-					←
+					<AiOutlineArrowLeft/>
 				</button>
 				<button className='carousel-btn next' onClick={nextSlide}>
-					→
+					<AiOutlineArrowRight/>
 				</button>
 
 				<div className='dots'>

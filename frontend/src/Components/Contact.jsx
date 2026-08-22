@@ -10,33 +10,24 @@ const Contact = ()=>{
        const mapped=res.data.map((data)=>{
         return  setcontact(data)
      })
-        console.log(res.data[0]._id);
+        // console.log(res.data[0]._id);
      }
         fetch()
     },[1])
     const data =[
         {
-            id:contact._id,
             title:"📍 Address",
             desc:contact.address
         },
           {
-            id:contact._id,
             title:"📞 Phone",
             desc:contact.phone
         },
           {
-            id:contact._id,
             title:"📧 Email",
             desc:contact.email
         },
           {
-            id:contact._id,
-            title:"🕒 School Hours",
-            desc:contact.school
-        },
-          {
-            id:contact._id,
             title:"📍Social Media",
             desc:contact.social
         }
@@ -64,7 +55,7 @@ const Contact = ()=>{
         <div className="contact-info">
       {  data.map((datum)=>{
             return (
-                <div className="info-box" key={datum.id}>
+                <div className="info-box">
                 <h3 key={datum.id}>{datum.title}</h3>
                 <p>{datum.desc}</p>
             </div>

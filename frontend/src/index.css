@@ -959,7 +959,7 @@ footer p{
   bottom: 20px;
   right: 30px;
   background-color: var(--orange-peel);
-  color: var(green);
+  color: green;
   font-size: 22px;
   padding: 12px;
   border-radius: 50%;

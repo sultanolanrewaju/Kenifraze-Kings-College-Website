@@ -15,7 +15,9 @@ app.use(express.json())
 app.use(cors())
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://kenifraze-kings-college-website-ten.vercel.app"
+  "https://kenifraze-kings-college-website-ten.vercel.app",
+  "https://kenifrazekingscollege.com",
+  "https://www.kenifrazekingscollege.com"
 ];
 
 app.use(cors({

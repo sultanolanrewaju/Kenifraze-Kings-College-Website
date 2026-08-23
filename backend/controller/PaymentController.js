@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Donation from "../models/PaymentModel.js";
-import dotenv from 'dotenv/config';
+import 'dotenv/config';
 
 // Getting All the Donor
 export const getDonor = async(req,res)=>{
@@ -52,10 +52,10 @@ export const initializeDonation = async (req, res) => {
     // Convert amount to Kobo/Cents (Paystack calculates in lowest currency unit: 1 NGN = 100 Kobo)
     const amountInKobo = Math.round(Number(amount) * 100);
 
-    // Call Paystack API
-    const frontendBase = process.env.FRONTEND_URL 
-  ? process.env.FRONTEND_URL.replace(/\/$/, "") 
-  : "http://localhost:5173";
+  // Dynamically build Callback URL
+    const rawFrontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const frontendBase = rawFrontendUrl.replace(/\/$/, ""); 
+    const callbackUrl = `${frontendBase}/verify`;
 
 const callbackUrl = `${frontendBase}/verify`;
 

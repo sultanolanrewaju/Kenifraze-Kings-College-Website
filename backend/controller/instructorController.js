@@ -21,7 +21,11 @@ try {
 export const getInstructorbyId = async(req,res)=>{
 try {
     const FoundInstructor = await Instructor.findById(req.params.id)
+    if(!FoundInstructor){
+      res.status(404).json({message:"Instructor Not Found!!!"})
+    }else{
  res.status(200).json(FoundInstructor) 
+    }
 } catch (error) {
     res.send("Error in Get Instructor By Id Controller")
     console.log(error);

@@ -2,12 +2,13 @@ import React from 'react'
 import axios from "axios"
 import Navbar from './Navbar'
 import { useState } from 'react'
+import API from '../libs/api'
+
 // Styles
 import  "../styles/donation.css"
 import { toast } from 'sonner'
 const DonationForm = () => {
     const [error,setError] = useState("")
-    const [showmsg,setShowmsg] = useState(false)
         // Payment Data
     const[formdata,setFormData] = useState({
         donorfName:"",
@@ -15,7 +16,7 @@ const DonationForm = () => {
         email:"",
         amount:"",
     })
-   
+    
     const [loading,setLoading] = useState(false)
    
     const handleChange = (e)=>{
@@ -28,22 +29,27 @@ const DonationForm = () => {
          setLoading(true);
          
          try {
-        if(formdata.donorfName || formdata.donorlName || formdata.email || formdata.amount === ""){
-            setShowmsg(true)
+        if(!formdata.amount||!formdata.donorfName.trim() || !formdata.donorlName.trim() || !formdata.email.trim() ){
+            toast.error("Input Your Information!")
         }
         // const payload = {
 
         // }
         // Call the payment API
-        const response =  await axios.post(`${import.meta.env.VITE_LIVE_URL}/api/payment/donate/initialize`,formdata);
+        const response =  await API.post(`/api/payment/donate/initialize`,formdata)
+     console.log(response);
+     
+        
         const {authorization_url,reference} = response.data;
    
         //  Redirect User to Checkout Page
-        window.location.href=authorization_url;
+        if(authorization_url){
+ window.location.href=authorization_url;
+        }
 
     } catch (error) {
         console.error("Initializing error",error);
-        toast.error("No Internet Connection")
+        toast.error("Error While Making Donation")
         // alert(error.response?.data?.error || "Failed to initialize payment")
     }finally{
         setLoading(false)
@@ -53,9 +59,7 @@ const DonationForm = () => {
    <>
    <Navbar/>
    <h1 className='form-heading'>Help Build The future Leaders with your support </h1>
-   <div className={showmsg ? "valid":"hide"}>
-    <span>All field are required</span>
-   </div>
+   
     <section id="kkcf-donate-form-section" className="kkcf-section-donation">
             <div className="kkcf-container">
                 <div className="kkcf-form-box">

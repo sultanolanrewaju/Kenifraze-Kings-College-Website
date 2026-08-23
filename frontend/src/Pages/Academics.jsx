@@ -26,6 +26,15 @@ const Academics = ()=>{
     }
   }, [isErroracademics])
 
+      // Truncate Text
+    const truncateClean = (text, maxLength = 130) => {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+
+  // Trim to maxLength, then drop trailing incomplete word
+  const truncated = text.substring(0, maxLength);
+  return truncated.substring(0, truncated.lastIndexOf(" ")).trim() + "...";
+};
  return (
 <>
 <Navbar/>
@@ -52,7 +61,7 @@ const Academics = ()=>{
 ): academics?.length > 0 ?(
     academics?.map((academic)=>{
         return(
- <Card key={academic._id} img={academic.ImageUrl} title={academic.title} desc={academic.description}/>
+ <Card key={academic._id} img={academic.ImageUrl} title={academic.title} desc={truncateClean(academic.description,130)}/>
         )
     })
 ):(

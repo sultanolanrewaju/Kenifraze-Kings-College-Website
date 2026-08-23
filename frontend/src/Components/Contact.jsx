@@ -7,31 +7,14 @@ const Contact = ()=>{
     useEffect(()=>{
      const fetch = async ()=>{
            const res = await axios.get("http://localhost:5000/api/admin/contact")
-       const mapped=res.data.map((data)=>{
-        return  setcontact(data)
-     })
+            setcontact(res.data)
+            console.log(res.data);
+            
         // console.log(res.data[0]._id);
      }
         fetch()
     },[1])
-    const data =[
-        {
-            title:"📍 Address",
-            desc:contact.address
-        },
-          {
-            title:"📞 Phone",
-            desc:contact.phone
-        },
-          {
-            title:"📧 Email",
-            desc:contact.email
-        },
-          {
-            title:"📍Social Media",
-            desc:contact.social
-        }
-    ]
+
     return (
         <>
         
@@ -53,16 +36,25 @@ const Contact = ()=>{
 
         {/* <!-- Contact Information --> */}
         <div className="contact-info">
-      {  data.map((datum)=>{
-            return (
-                <div className="info-box">
-                <h3 key={datum.id}>{datum.title}</h3>
-                <p>{datum.desc}</p>
+ <div className="info-box">
+                <h3>📍 Address</h3>
+                <p>{contact.address}</p>
             </div>
 
-            )
-        })
-            }
+                 <div className="info-box">
+                <h3>📞 Phone</h3>
+                <p>{contact.phone}</p>
+            </div>
+
+                 <div className="info-box">
+                <h3>📧 Email</h3>
+                <p>{contact.email}</p>
+            </div>
+
+                 <div className="info-box">
+                <h3>📍Social Media</h3>
+                <p>{contact.social}</p>
+            </div>
 
         </div>
 

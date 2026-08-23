@@ -3,7 +3,8 @@ import { useSearchParams,useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Loader from "../Components/Loader"
-import API_BASE_URL from '../libs/api'
+import API from '../libs/api'
+
 // Styles
 import  "../styles/verify.css"
 const VerifyDonation = () => {
@@ -20,7 +21,7 @@ const VerifyDonation = () => {
     
     const reference =searchparams.get("reference") || searchparams.get("trxref");
     useEffect(()=>{
-        const verifyPayment = async()=>{
+        const verifyPayment = ()=>{
             if (!reference) {
                 setReferences("No reference Number Found");
                 setLoading(false)
@@ -28,21 +29,25 @@ const VerifyDonation = () => {
             }
 
             try {
+                console.log("Current API Base URL:", import.meta.env.VITE_API_URL);
                 // Call Backend in order to update status
-                const APicalls = await axios.get(`${import.meta.env.VITE_DEVELOPMENT}/api/payment/donate/verify/${reference}`);
-                console.log(APicalls.data)
-                const Base = APicalls?.data?.donation;
-                setAmount(Base.amount)
-                setReferences(Base.reference)
-                setName(Base.donorfName + " "  + Base.donorlName)
-                setEmail(Base.email)
-                console.log(Base.amount);
-                if (APicalls.status === 200) {
-                    setStatus(Base.status)
-                //    setTimeout(()=>{ navigate("/")},4000)
-                }else if(APicalls.status(404)){
-                    setStatus("Failed")
-                }
+                const APicalls = API(`/api/payment/donate/verify/${reference}`).then((res)=>{
+                  console.log(res);
+                  
+                    console.log(res.data)
+                    const Base = res.data?.donation;
+                    setAmount(Base.amount)
+                    setReferences(Base.reference)
+                    setName(Base.donorfName + " "  + Base.donorlName)
+                    setEmail(Base.email)
+                    console.log(Base.amount);
+                    if (res.status === 200) {
+                        setStatus(Base.status)
+                    //    setTimeout(()=>{ navigate("/")},4000)
+                    }else if(res.status(404)){
+                        setStatus("Failed")
+                    }
+                })
             } catch (error) {
                 console.error(`Error making donation ${error}`)
                 setStatus(error.response?.data?.error || "FAILED")

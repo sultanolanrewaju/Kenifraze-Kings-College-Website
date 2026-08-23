@@ -26,8 +26,9 @@ app.use("/api/payment/donate",PaymentRoutes)
 
 // Local 
 // MOngoURI = process.env.MONGO_URI ||
+console.log(process.env.MONGO_URI);
 
-mongoose.connect("mongodb://localhost:27017/kkcDb").then(()=>{
+mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/kkcDb").then(()=>{
   console.log("Mongodb Connected Successfully!!");
   app.listen(process.env.PORT,()=>{
       console.log(`Server Is running on port http://localhost:${process.env.PORT}`)

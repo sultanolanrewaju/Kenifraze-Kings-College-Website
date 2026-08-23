@@ -3,12 +3,15 @@ import { deleteAcademic, getAcademic,getOneAcademic, postAcademic, updateAcademi
 import upload from "../middlewares/uploadMiddlewares.js"
 const router = express.Router()
 
-router.get("/",getAcademic)
-router.get("/:id",getOneAcademic)
+// Protected Routes
 router.post("/",upload.single("ImageUrl"),postAcademic)
 router.put("/:id",upload.single("ImageUrl"),updateAcademic)
 router.patch("/:id",upload.single("ImageUrl"),UpdateSpecific)
 router.delete("/:id",deleteAcademic)
+
+
+router.get("/",getAcademic)
+router.get("/:id",getOneAcademic)
 
 
 

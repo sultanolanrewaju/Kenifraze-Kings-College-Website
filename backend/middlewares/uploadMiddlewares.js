@@ -10,7 +10,7 @@ api_key: process.env.CLOUDINARY_API_KEY,
 api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
-// Set up storage and destination f
+// Set up storage and destination for the photo
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {

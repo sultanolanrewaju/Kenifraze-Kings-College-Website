@@ -26,6 +26,16 @@ const Event = () => {
     }
   }, [isErrorEvents])
    
+
+      // Truncate Text
+    const truncateClean = (text, maxLength = 130) => {
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+
+  // Trim to maxLength, then drop trailing incomplete word
+  const truncated = text.substring(0, maxLength);
+  return truncated.substring(0, truncated.lastIndexOf(" ")).trim() + "...";
+};
     return (
         <>
             <Navbar />
@@ -49,7 +59,7 @@ const Event = () => {
         ): events?.length > 0 ?(                                 
         events?.map((event)=>{
             return(
-<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={event.description} location={event.location}/>
+<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={truncateClean(event.description,130)} location={event.location}/>
             )
         })
     ):(

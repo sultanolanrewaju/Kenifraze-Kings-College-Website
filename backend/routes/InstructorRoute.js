@@ -5,13 +5,17 @@ import upload from "../middlewares/uploadMiddlewares.js"
 
 const router = express.Router()
 
-
-router.get("/",getInstructor);
-router.get("/:id",getInstructorbyId);
+// Protected Routes
 router.post("/",upload.single("ImageUrl"),postInstructor)
 router.put("/:id",upload.single("ImageUrl"),putInstructor)
 router.patch("/:id",upload.single("ImageUrl"),patchInstructor)
 router.delete("/:id",deleteInstructor)
+
+
+// Public Routes
+
+router.get("/",getInstructor);
+router.get("/:id",getInstructorbyId);
 
 
 export default router

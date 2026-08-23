@@ -1,6 +1,8 @@
-const API_BASE_URL =
-  import.meta.env.MODE === "development"
-    ? import.meta.env.VITE_DEVELOPMENT
-    : import.meta.env.VITE_PRODUCTION;
+import axios from "axios";
 
-export default API_BASE_URL;
+// Uses Vercel's env variable when deployed, or defaults to localhost in dev
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000",
+});
+
+export default API;

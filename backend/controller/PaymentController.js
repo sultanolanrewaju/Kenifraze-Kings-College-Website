@@ -54,11 +54,11 @@ export const initializeDonation = async (req, res) => {
 
     // Call Paystack API
     const paystackResponse = await axios.post(
-      `${process.env.PAYSTACK_URL}transaction/initialize`,
+      `${process.env.PAYSTACK_URL}/transaction/initialize`,
       {
         email,
         amount: amountInKobo,
-        callback_url: process.env.FRONTEND_URL || "localhost:5173/verify", // React redirect page
+        callback_url:  "http://localhost:5173/verify" || process.env.FRONTEND_URL , // React redirect page
         metadata: {  donorfName,donorlName },
       },
       {
@@ -83,7 +83,6 @@ export const initializeDonation = async (req, res) => {
 
     // Send redirect URL back to React frontend
     res.status(200).json({ authorization_url, reference });
-console.log(process.env.FRONTEND_URL);
 
   } catch (error) {
     console.error("Paystack Init Error:", error.response?.data || error.message);
@@ -97,18 +96,13 @@ console.log(process.env.FRONTEND_URL);
 export const verifyDonation = async (req, res) => {
   try {
     const { reference } = req.params;
-
-    // DEBUG LOGS
-    console.log("Extracted Reference:", reference);
-    console.log("Secret Key Loaded:", process.env.TEST_PAYSTACK_SECRET_KEY ? "YES" : "NO - KEY IS UNDEFINED");
-
     if (!reference) {
       return res.status(400).json({ error: "Transaction reference is required." });
     }
 
     // Call Paystack to verify status directly with their servers
     const paystackResponse = await axios.get(
-      `${process.env.PAYSTACK_URL}transaction/verify/${reference}`,
+      `${process.env.PAYSTACK_URL}/transaction/verify/${reference}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.TEST_PAYSTACK_SECRET_KEY}`,

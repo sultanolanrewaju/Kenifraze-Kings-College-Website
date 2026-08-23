@@ -1,0 +1,49 @@
+GET  http://localhost:3000/api/admin
+
+###
+
+POST http://localhost:3000/api/admin
+Content-Type: application/json
+
+  {
+    "image": "new.png",
+    "name": "Ghs-Julian",
+    "info": "Julian is from west Bengal. He is a software developer."
+  }
+
+
+###
+
+POST ​http://localhost:3000/api/admin/event
+Content-Type: application/json
+
+{
+"title":"Valentine Day",
+"description":"KKc celebrates valentine Day of 14th of february",
+"date":"14-02-2027",
+"location":"School Compound",
+"ImageUrl":"Students.jpg"
+}
+
+###
+PUT http://localhost:3000/api/admin/Graduation Ceremony
+Content-Type: application/json
+
+
+{
+    "_id": "6a5b91738a14a5d6f5b66aec",
+    "image": "Image_name.jpg",
+    "name": "Graduation Ceremony",
+    "info": "New kkc graduation, join us now!!!"
+  }
+
+
+###
+
+DELETE  http://localhost:3000/api/admin
+
+
+
+###
+
+DELETE http://localhost:3000/api/admin/Alumni-together

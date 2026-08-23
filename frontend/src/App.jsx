@@ -13,17 +13,18 @@ function App() {
   return (
     <>
     <Toaster position="top-center"  richColors
-    toastOptions={{
-          style: {
-            display: "flex !important",
-    justifyContent: "center !important",
-            width: '380px !important',
-            minHeight: '50px',
-            fontSize: '20px ',
-            padding: '18px 24px !important',
-              textAlign: "center"
-          },
-        }}/>
+    // toastOptions={{
+    //       style: {
+    //         display: "flex !important",
+    // justifyContent: "center !important",
+    //         width: '20px !important',
+    //         minHeight: '10px',
+    //         fontSize: '15px ',
+    //         padding: '18px 24px !important',
+    //           textAlign: "center"
+    //       },
+    //     }}
+        />
 
     <Routes>
       <Route path="/" element={ <Home/>}/>

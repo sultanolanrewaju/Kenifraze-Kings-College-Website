@@ -403,7 +403,6 @@
             top: 50px ;
         }
         .kkcf-form-box {
-            background-color:var();
             color: var(--kkcf-dark);
             max-width: 550px;
             margin: 0 auto;

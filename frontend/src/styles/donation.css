@@ -532,7 +532,7 @@
             color: #6B7280;
             padding: 48px 0;
             text-align: center;
-            border-t: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
         }
         .kkcf-footer-logo {
             color: #ffffff;

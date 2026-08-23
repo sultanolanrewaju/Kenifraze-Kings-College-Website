@@ -984,7 +984,585 @@ footer p{
         border-bottom: 4px solid var(--accent);
          box-shadow:30px 20px 10px rgba(0,0,0,0.08);
     }
-    
+      /* CSS VARIABLES & NAMESPACED SCOPING */
+        .kkcf-wrapper {
+            --kkcf-primary: #4F46E5;
+            --kkcf-primary-hover: #4338CA;
+            --kkcf-secondary: #EC4899;
+            --kkcf-secondary-hover: #DB2777;
+            --kkcf-dark: #1F2937;
+            --kkcf-darker: #111827;
+            --kkcf-black: #030712;
+            --kkcf-gray-light: #F9FAFB;
+            --kkcf-gray-border: #E5E7EB;
+            --kkcf-text-muted: #6B7280;
+            --kkcf-text-light: #9CA3AF;
+            
+            font-family: 'Inter', sans-serif;
+            background-color: var(--kkcf-gray-light);
+            color: var(--kkcf-dark);
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Prevent layout breaking by scoping box-sizing securely */
+        .kkcf-wrapper *, 
+        .kkcf-wrapper *::before, 
+        .kkcf-wrapper *::after {
+            box-sizing: border-box;
+        }
+        body{
+            background: var(--kkcf-dark);
+        }
+
+        /* UTILITIES */
+        .kkcf-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        .kkcf-header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .kkcf-header-nav {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .kkcf-logo-box {
+            display: flex;
+            position: relative;
+            top: 3%;
+            left: 30%;
+            text-align: center;
+            flex-direction: column;
+        }
+        .kkcf-logo-main {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--kkcf-primary);
+        }
+        .kkcf-logo-sub {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--kkcf-text-muted);
+            margin-top: -2px;
+        }
+        .kkcf-btn-header {
+            background-color: var(--kkcf-secondary);
+            color: #ffffff;
+            font-weight: 700;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(236, 72, 153, 0.2);
+        }
+        .kkcf-btn-header:hover {
+            background-color: var(--kkcf-secondary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* HERO SECTION */
+        .kkcf-hero-section {
+            background: linear-gradient(135deg, var(--kkcf-primary) 0%,#34345B 100%);
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+        .kkcf-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #FBCFE8;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        .kkcf-hero-title {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 24px auto;
+        }
+        .kkcf-hero-highlight {
+            background: linear-gradient(to right, #F472B6, #FBBF24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kkcf-hero-desc {
+            font-size: 18px;
+            color: #E0E7FF;
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+        .kkcf-hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .kkcf-btn-primary {
+            background-color:#F55A28;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        .kkcf-btn-primary:hover {
+            background-color: var(--kkcf-secondary-hover);
+        }
+        .kkcf-btn-outline {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: background 0.2s ease;
+        }
+        .kkcf-btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* IMPACT STATS */
+        .kkcf-section-stats {
+            padding: 60px 0;
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--kkcf-gray-border);
+        }
+        .kkcf-section-title-center {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--kkcf-dark);
+        }
+        .kkcf-section-subtitle-center {
+            text-align: center;
+            color: var(--kkcf-text-muted);
+            margin-bottom: 48px;
+            margin-top: 0;
+        }
+        .kkcf-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .kkcf-stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--kkcf-primary);
+            margin-bottom: 8px;
+        }
+        .kkcf-stat-label {
+            color: #4B5563;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* MISSION QUOTE */
+        .kkcf-section-quote {
+            padding: 60px 0;
+            background-color: var(--kkcf-gray-light);
+            text-align: center;
+        }
+        .kkcf-quote-text {
+            font-size: 24px;
+            font-weight: 500;
+            font-style: italic;
+            color: #374151;
+            max-width: 800px;
+            margin: 0 auto 16px auto;
+            line-height: 1.6;
+        }
+        .kkcf-quote-author {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--kkcf-text-muted);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* WHY WE NEED HELP (TWO COLUMN) */
+        .kkcf-section-needs {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        .kkcf-needs-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .kkcf-pretitle {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--kkcf-primary);
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .kkcf-needs-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--kkcf-dark);
+            margin: 0 0 20px 0;
+        }
+        .kkcf-needs-p {
+            color: #4B5563;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .kkcf-needs-link {
+            color: var(--kkcf-primary);
+            font-weight: 700;
+            font-size: 17px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .kkcf-needs-link:hover {
+            color: var(--kkcf-primary-hover);
+        }
+        .kkcf-needs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .kkcf-need-card {
+            background-color: var(--kkcf-gray-light);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #F3F4F6;
+        }
+        .kkcf-need-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        .kkcf-icon-indigo { background-color: #E0E7FF; color: var(--kkcf-primary); }
+        .kkcf-icon-pink { background-color: #FCE7F3; color: var(--kkcf-secondary); }
+        .kkcf-icon-yellow { background-color: #FEF3C7; color: #D97706; }
+        .kkcf-icon-green { background-color: #DCFCE7; color: #15803D; }
+
+        .kkcf-need-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: var(--kkcf-dark);
+        }
+        .kkcf-need-card-desc {
+            color: var(--kkcf-text-muted);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* DONATION TIERS & FORM */
+        .kkcf-section-donation {
+            background-color: var(--kkcf-darker);
+            color: #ffffff;
+            padding: 80px 0;
+        }
+        .kkcf-title-white {
+            color: #ffffff;
+        }
+        .kkcf-subtitle-gray {
+            color: var(--kkcf-text-light);
+        }
+        .kkcf-tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .kkcf-tier-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: border-color 0.3s ease;
+        }
+        .kkcf-tier-card:hover {
+            border-color: var(--kkcf-primary);
+        }
+        .kkcf-tier-card-featured {
+            border-color: var(--kkcf-secondary);
+        }
+        .kkcf-tier-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--kkcf-secondary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+        .kkcf-tier-amt {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .kkcf-tier-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #818CF8;
+            margin-bottom: 12px;
+        }
+        .kkcf-tier-title-featured {
+            color: #F472B6;
+        }
+        .kkcf-tier-desc {
+            font-size: 13px;
+            color: var(--kkcf-text-light);
+            margin: 0;
+        }
+        .kkcf-tier-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: none;
+            display: inline;
+            width: 100%;
+            padding: 10px 0;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-top: 24px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .kkcf-tier-btn:hover {
+            background-color: var(--kkcf-primary);
+        }
+        .kkcf-tier-btn-featured {
+            background-color: var(--kkcf-secondary);
+        }
+        .kkcf-tier-btn-featured:hover {
+            background-color: var(--kkcf-secondary-hover);
+        }
+
+        /* CHECKOUT FORM */
+        .form-heading{
+            text-align: center;
+            position: relative;
+            top: 50px ;
+        }
+        .kkcf-form-box {
+            color: var(--kkcf-dark);
+            max-width: 550px;
+            margin: 0 auto;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.5);
+        }
+        .kkcf-form-title {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            margin: 0 0 4px 0;
+            color:#1F2937;
+        }
+        .kkcf-form-subtitle {
+            font-size: 14px;
+            color: var(--kkcf-text-muted);
+            text-align: center;
+            margin: 0 0 30px 0;
+        }
+        .kkcf-form-group {
+            margin-bottom: 20px;
+        }
+        .kkcf-form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .kkcf-input-wrapper {
+            position: relative;
+        }
+        .kkcf-input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B7280;
+        }
+        .kkcf-input-amount {
+            width: 100%;
+            padding: 12px 12px 12px 36px;
+            font-size: 18px;
+            font-weight: 700;
+            border: 1px solid #D1D5DB;
+            border-radius: 12px;
+        }
+        .kkcf-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .kkcf-input-text {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid #D1D5DB;
+            border-radius: 8px;
+        }
+        .kkcf-btn-submit {
+            width: 100%;
+            background-color:#4F46E5;
+            color: #ffffff;
+            border: none;
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            transition: background 0.2s ease;
+        }
+        .kkcf-btn-submit:hover {
+            background-color:#4338CA;;
+        }
+        .kkcf-secure-tag{
+            font-size: 12px;
+            color:#37383a;
+            text-align: center;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .valid{
+            font-size:20px;
+            text-align: center;
+            /* padding: 2px; */
+            position: absolute;
+            top:45%;
+            left:32%;
+            width: 450px;
+            height:25px;
+            border-radius:10px;
+            border: 2px solid red;
+        }
+        .hide{
+            display: none;
+        }
+        .international{
+            position: relative;
+            top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 50px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: white;
+            background: #F55A28;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+           cursor: pointer;
+        }
+
+        /* FOOTER */
+        .kkcf-footer {
+            background-color: var(--kkcf-black);
+            color: #6B7280;
+            padding: 48px 0;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .kkcf-footer-logo {
+            color: #ffffff;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+            margin: 0 0 8px 0;
+        }
+        .kkcf-footer-desc {
+            font-size: 14px;
+            color: var(--kkcf-text-light);
+            max-width: 450px;
+            margin: 0 auto 24px auto;
+        }
+        .kkcf-footer-divider {
+            border: 0;
+            border-top: 1px solid #1F2937;
+            max-width: 300px;
+            margin: 0 auto 24px auto;
+        }
+        .kkcf-copyright {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .kkcf-tiers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .kkcf-hero-title { font-size: 32px; }
+            .kkcf-stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .kkcf-needs-layout { grid-template-columns: 1fr; gap: 40px; }
+            .kkcf-tiers-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .kkcf-stats-grid { grid-template-columns: 1fr; }
+            .kkcf-needs-grid { grid-template-columns: 1fr; }
+            .kkcf-tiers-grid { grid-template-columns: 1fr; }
+            .kkcf-form-row { grid-template-columns: 1fr; }
+            .kkcf-hero-buttons { flex-direction: column; }
+        }
     .nav-links{
         /* height: 60px; */
         flex-wrap:wrap;

@@ -2,11 +2,12 @@ import React from "react"
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
+import API from '../libs/api'
 const Contact = ()=>{
     const [contact,setcontact] = useState("")
     useEffect(()=>{
      const fetch = async ()=>{
-           const res = await axios.get("http://localhost:5000/api/admin/contact")
+           const res = await API(`/api/admin/contact`)
             setcontact(res.data)
             console.log(res.data);
             

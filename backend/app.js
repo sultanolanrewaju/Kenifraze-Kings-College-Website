@@ -13,14 +13,27 @@ import { configDotenv } from 'dotenv';
 import cors from "cors"
 app.use(express.json())
 app.use(cors())
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://kenifraze-kings-college-website-ten.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 app.use("/api/admin/events",EventsRoutes)
 app.use("/api/admin/academics",AcademicRoutes)
 app.use("/api/admin/instructors",InstructorRoutes)
 app.use("/api/admin/contact",ContactRoutes)
 app.use("/api/payment/donate",PaymentRoutes)
-
-
 
 
 

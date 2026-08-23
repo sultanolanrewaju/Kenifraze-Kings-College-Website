@@ -53,12 +53,18 @@ export const initializeDonation = async (req, res) => {
     const amountInKobo = Math.round(Number(amount) * 100);
 
     // Call Paystack API
+    const frontendBase = process.env.FRONTEND_URL 
+  ? process.env.FRONTEND_URL.replace(/\/$/, "") 
+  : "http://localhost:5173";
+
+const callbackUrl = `${frontendBase}/verify`;
+
     const paystackResponse = await axios.post(
       `${process.env.PAYSTACK_URL}/transaction/initialize`,
       {
         email,
         amount: amountInKobo,
-        callback_url:  "http://localhost:5173/verify" || process.env.FRONTEND_URL , // React redirect page
+        callback_url:callbackUrl, // React redirect page
         metadata: {  donorfName,donorlName },
       },
       {

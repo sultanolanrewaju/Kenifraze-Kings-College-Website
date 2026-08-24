@@ -10,7 +10,9 @@ const Navbar = ()=>{
  return (
 <>
 <nav className="navbar">
-    <div className="logo"><div className="img"><img src="./IMAGES/Logo.jpeg"/></div><div className="text"><h2>KENIFRAZE KINGS COLLEGE</h2></div></div>
+    <Link to="/">
+    <div className="logo"><div className="img"></div><div className="text"><h2>KENIFRAZE KINGS COLLEGE</h2></div></div>
+    </Link>
 
     <ul className={toggle ? "nav-links" : "heighter"}>
         <li><Link to="/">Home</Link></li> 

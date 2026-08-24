@@ -508,8 +508,7 @@ body{
 
   
 .event-date{
-    display:flex;
-    gap: 1em;
+    margin-left:3px;
 }
 }
 

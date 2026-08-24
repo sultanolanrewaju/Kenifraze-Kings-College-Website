@@ -13,10 +13,10 @@ const Eventcard = (props)=>{
             <div className="event-content">
                <div className="event-info">
                  <div className="event-date">
-                 <b>Date:</b> {props.date}
+                 <b>Date:</b>{props.date}
                 </div>
                 <div className="event-date">
-                 <b>Venue :</b><span style={{paddingLeft:"5px"}}>{props.location}</span>
+                 <b>Venue:</b><span>{props.location}</span>
                 </div>
                </div>
                 

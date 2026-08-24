@@ -52,7 +52,7 @@ const Academics = ()=>{
     <a href="#" onClick={()=>{setCategory("Announcement")}}>Announcement</a>
    </div>
     <div className="category">
-      <a href="#" onClick={()=>{alert("Hey")}}>Admission</a>
+      <a href="#" onClick={()=>{setCategory("Admission")}}>Admission</a>
     </div>
 </div>
   <div className="activities-grid">

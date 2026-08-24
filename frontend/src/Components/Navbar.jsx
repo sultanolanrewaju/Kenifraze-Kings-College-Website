@@ -1,36 +1,45 @@
-import {Link} from "react-router-dom"
-import { useState } from "react"
-import{ AiOutlineMenu} from "react-icons/ai"
-const Navbar = ()=>{
-    const[toggle,setToggle] = useState(true)
-    const handleClick = ()=>{
-       setToggle(!toggle)
-    // alert("Hey")
-    }
- return (
-<>
-<nav className="navbar">
-    <Link to="/">
-    <div className="logo"><div className="img"></div><div className="text"><h2>KENIFRAZE KINGS COLLEGE</h2></div></div>
-    </Link>
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AiOutlineMenu } from 'react-icons/ai';
 
-    <ul className={toggle ? "nav-links" : "heighter"}>
-        <li><Link to="/">Home</Link></li> 
-        <li><Link to="/events">Events</Link></li>
-        <li><Link to="/academics">Academics</Link></li>
-                <li><Link to="/about">About</Link></li>
-        {/* <li><a href="/">Contact</Link></li> */}
-    </ul>
-    <div>   
-         <Link to="/donation"> <button className={toggle ? "donate" : "hide"}>Donation</button></Link>
-    </div>
-    <div className="menu">
-        <AiOutlineMenu size={"30px"} className="burger"  onClick={handleClick}/>
-    </div>
-</nav>
-</>
- )   
-}
+const Navbar = () => {
+    const [toggle, setToggle] = useState(true);
 
+    const handleClick = () => {
+        setToggle(!toggle);
+    };
 
-export default Navbar
+    return (
+        <nav className="navbar">
+            <Link to="/" style={{ textDecoration: 'none' }}>
+                <div className="logo">
+                    <div className="img">
+                        <img src="./IMAGES/Logo.jpeg" alt="Kenifraze Kings College Logo" />
+                    </div>
+                    <div className="text">
+                        <h2>KENIFRAZE KINGS COLLEGE</h2>
+                    </div>
+                </div>
+            </Link>
+
+            <ul className={toggle ? "nav-links" : "heighter"}>
+                <li><Link to="/" onClick={() => setToggle(true)}>Home</Link></li> 
+                <li><Link to="/events" onClick={() => setToggle(true)}>Events</Link></li>
+                <li><Link to="/academics" onClick={() => setToggle(true)}>Academics</Link></li>
+                <li><Link to="/about" onClick={() => setToggle(true)}>About</Link></li>
+            </ul>
+
+            <div>   
+                <Link to="/donation">
+                    <button className={toggle ? "donate" : "hide"}>Donation</button>
+                </Link>
+            </div>
+
+            <div className="menu">
+                <AiOutlineMenu size={"30px"} className="burger" onClick={handleClick} />
+            </div>
+        </nav>
+    );
+};
+
+export default Navbar;

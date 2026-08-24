@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai"
 const slidesData = [
 	{
-		src: "./IMAGES/group_photo.jpg",
+		src: "/IMAGES/group_photo.jpg",
 		alt: "students",
 		title: "Welcome to KKC",
 		description: "Inspiring excellence and leadership for a brighter future."
@@ -11,7 +11,7 @@ const slidesData = [
 	    
 	},
 	{
-		src: "./IMAGES/graduands.jpg",
+		src: "/IMAGES/graduands.jpg",
 		alt: "Makeup artist",
 		title: "Academic Excellence",
 		description: "Providing quality education in a modern learning environment.",
@@ -19,14 +19,14 @@ const slidesData = [
 		btnLink : ""
 	},
 	{
-		src: "./IMAGES/COVER3.jpeg",
+		src: "/IMAGES/COVER3.jpeg",
 		alt: "Students.",
 		title: "Unlocking Hidden Potentials",
 		description: "Uncovering hidden potential and revealing students creativity."
 		,btnText : "Build Profile",
 		btnLink : ""},
 	{
-	 	src: "./IMAGES/COVER4.jpeg",
+	 	src: "/IMAGES/COVER4.jpeg",
 	 	alt: "Students",
 	 	title: "Building Future Leaders",
 	 	description: "Empowering students with knowledge, values, and confidence."

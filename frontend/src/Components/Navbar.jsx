@@ -10,7 +10,9 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="navbar">
+    <header>
+
+            <nav className="navbar">
             <Link to="/" style={{ textDecoration: 'none' }}>
                 <div className="logo">
                     <div className="img">
@@ -39,6 +41,7 @@ const Navbar = () => {
                 <AiOutlineMenu size={"30px"} className="burger" onClick={handleClick} />
             </div>
         </nav>
+    </header>
     );
 };
 

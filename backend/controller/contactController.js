@@ -2,7 +2,7 @@ import Contact from "../models/ContactModel.js";
 
 export const getContact = async(req,res)=>{
 try {
-    const Foundcontact = await Contact.find({}) ;
+    const Foundcontact = await Contact.find({}).sort({createdAt:-1}) ;
     res.status(200).json(Foundcontact)
 } catch (error) {
     console.log("Error:" + error);
@@ -21,9 +21,20 @@ export const postContact = async(req,res)=>{
             social
         }
      Contact.insertOne(newContact);
-     res.status(200).json({newContact})        
+     res.status(200).json(newContact)        
     } catch (error) {
             console.log("Error:" + error);
     res.status(500).json({message:"Internal Server Error get Contact"})
     }
+}
+
+
+export const deleteContact = async(req,res)=>{
+try {
+    const Foundcontact = await Contact.deleteMany();
+    res.status(200).json(Foundcontact)
+} catch (error) {
+    console.log("Error:" + error);
+    res.status(500).json({message:"Internal Server Error get Contact"})
+}
 }

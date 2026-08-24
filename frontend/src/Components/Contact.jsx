@@ -7,9 +7,10 @@ const Contact = ()=>{
     const [contact,setcontact] = useState("")
     useEffect(()=>{
      const fetch = async ()=>{
-           const res = await API(`/api/admin/contact`)
-            setcontact(res.data)
-            console.log(res.data);
+           const res = await API(`/api/admin/contact`);
+           const value = res.data;
+            setcontact(value[0])
+            console.log(value[0]._id);
             
         // console.log(res.data[0]._id);
      }

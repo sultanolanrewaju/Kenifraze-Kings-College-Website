@@ -18,6 +18,7 @@ body{
     background:#fff;
     color:#333;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* NAVBAR */

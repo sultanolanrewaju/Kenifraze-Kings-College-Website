@@ -84,7 +84,7 @@ const [loading,setLoading] = useState(true)
 
         <div className="principal-content">
 
-            <span className="section-tag">MESSAGE FROM THE PRINCIPAL</span>
+            <span className="section-tag">MESSAGE FROM THE PROPRIETOR</span>
 
             <h2>Welcome to Kenifraze Kings College</h2>
 
@@ -107,7 +107,7 @@ const [loading,setLoading] = useState(true)
                 impact in society.
             </p>
 
-            <h4>— Principal, Kenifraze Kings College</h4>
+            <h4>— Proprietor, Kenifraze Kings College</h4>
 
         </div>
 

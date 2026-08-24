@@ -57,8 +57,6 @@ export const initializeDonation = async (req, res) => {
     const frontendBase = rawFrontendUrl.replace(/\/$/, ""); 
     const callbackUrl = `${frontendBase}/verify`;
 
-const callbackUrl = `${frontendBase}/verify`;
-
     const paystackResponse = await axios.post(
       `${process.env.PAYSTACK_URL}/transaction/initialize`,
       {

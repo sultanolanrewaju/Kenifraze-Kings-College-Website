@@ -176,7 +176,7 @@ isLoadingAcademics ?(
         ): limitedEvents.length > 0 ?(                                 
         limitedEvents?.map((event)=>{
             return(
-<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={truncateClean(event.description,130)} location={truncateClean(event.location,90)}/>
+<Eventcard key={event._id} img={event.ImageUrl} date={event.date} title={event.title} desc={truncateClean(event.description,130)} location={truncateClean(event.location,50)}/>
             )
         })
     ):(

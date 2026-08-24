@@ -17,6 +17,7 @@
 body{
     background:#fff;
     color:#333;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */

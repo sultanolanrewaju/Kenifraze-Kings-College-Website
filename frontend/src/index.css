@@ -1752,3 +1752,43 @@ footer p{
 
 
 
+/* ==========================================
+   MOBILE OVERFLOW & HORIZONTAL SCROLL FIXES
+   ========================================== */
+
+/* Enforce hard boundaries on both root containers */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+@media (max-width: 768px) {
+    /* 1. Prevent image width overflow */
+    .principal-image img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 2. Reset offset positioning breaking mobile margins */
+    .logo {
+        left: 0 !important;
+    }
+
+    /* 3. Make overlay and form containers responsive */
+    .valid {
+        width: 90% !important;
+        left: 5% !important;
+    }
+
+    .kkcf-form-box {
+        width: 100% !important;
+        padding: 25px 15px !important;
+    }
+
+    /* 4. Ensure all images and grids stay inside the screen */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}

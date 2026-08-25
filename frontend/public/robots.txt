@@ -1,0 +1,13 @@
+#Robot.txt for KKC Website
+
+User-agent: *
+Allow: /
+
+
+#Prevent Unnecesary Route
+Disallow: /admin
+Disallow: /api/
+Disallow: /private
+
+#sLink directly to sitemap
+https://www.kenifrazekingscollege.com/sitemap.xml

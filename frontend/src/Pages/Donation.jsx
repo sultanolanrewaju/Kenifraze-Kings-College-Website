@@ -1,35 +1,37 @@
 import { useState } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
 // Styles
 import  "../styles/donation.css"
 
 // Components
 import Navbar from "../Components/Navbar"
-import DonationCard from "../Components/DonationCard"
+// import DonationCard from "../Components/DonationCard"
 import NeedCard from "../Components/NeedCard"
 import { donationTier } from "../libs/data"
 // Icons
 import { AiOutlineFork,AiOutlineBook } from "react-icons/ai"
+import Footer from "../Components/Footer"
 const Donation = () => {
 
 
 
   return (
     <>
-     <Navbar/>
        {/* <!-- Main wrapped element protects your global app stylesheets --> */}
+     <Navbar/>
     <div className="kkcf-wrapper">
 
         {/* <!-- Header --> */}
-        <header className="kkcf-header">
+        {/* <div className="kkcf-header">
             <div className="kkcf-container kkcf-header-nav">
                 <div className="kkcf-logo-box">
                     <span className="kkcf-logo-main">KKC FOUNDATION PROGRAMME</span>
                     <span className="kkcf-logo-sub">Lagos, Nigeria</span>
                 </div>
-                {/* <a href="#kkcf-donate-form-section" className="kkcf-btn-header">Donate Now</a> */}
+                <a href="#kkcf-donate-form-section" className="kkcf-btn-header">Donate Now</a>
             </div>
-        </header>
+        </div> */}
 
         {/* <!-- Hero --> */}
         <section className="kkcf-hero-section">
@@ -115,31 +117,20 @@ const Donation = () => {
                 
                 {/* <!-- Tiers --> */}
                 <div className="kkcf-tiers-grid">
-                    {
-                        donationTier.map((donation)=>{
-                            return(
-                            <DonationCard key={donation.id} amount={donation.amount}  title={donation.title} desc={donation.desc}/>
-                            )
-                        })
-                    }
-   <div className="international">Pay in Dollar</div>
+                  <div className="pay-btn">
+                    <Link to="/donate">Donate in Naira</Link>
+                    </div>
+                  <div className="pay-btn">
+                   <Link to="/donate">Donate in Dollars</Link>
+                    </div>
+
                   </div>
                   
 </div>
 
         </section>
-
-       
-        <footer className="kkcf-footer">
-            <div className="kkcf-container">
-                <p className="kkcf-footer-logo">KKC FOUNDATION</p>
-                <p className="kkcf-footer-desc">Together, we can remove financial barriers and replace them with hope, opportunity, and success.</p>
-                <hr className="kkcf-footer-divider"/>
-                <p className="kkcf-copyright">&copy; 2026 KKC Foundation. Lagos, Nigeria. All Rights Reserved.</p>
-            </div>
-        </footer>
-
     </div>
+    <Footer/>
     </>
   )
 }

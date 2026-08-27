@@ -11,7 +11,8 @@
             --kkcf-gray-border: #E5E7EB;
             --kkcf-text-muted: #6B7280;
             --kkcf-text-light: #9CA3AF;
-            
+            --accent: #F55A28;  
+             --btn: #0A2342;
             font-family: 'Inter', sans-serif;
             background-color: var(--kkcf-gray-light);
             color: var(--kkcf-dark);
@@ -36,15 +37,14 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            margin-top: 70px;
         }
 
         /* HEADER */
         .kkcf-header {
-            background-color: #ffffff;
+            background-color: #cc0808;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+           /* position:sticky; */
         }
         .kkcf-header-nav {
             height: 80px;
@@ -75,7 +75,7 @@
             margin-top: -2px;
         }
         .kkcf-btn-header {
-            background-color: var(--kkcf-secondary);
+            background-color: var(--btn);
             color: #ffffff;
             font-weight: 700;
             padding: 10px 24px;
@@ -135,7 +135,7 @@
             flex-wrap: wrap;
         }
         .kkcf-btn-primary {
-            background-color:#F55A28;
+            background-color:var(--accent);
             color: #ffffff;
             font-size: 18px;
             font-weight: 700;
@@ -146,7 +146,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
         .kkcf-btn-primary:hover {
-            background-color: var(--kkcf-secondary-hover);
+            background-color: var(--btn);
         }
         .kkcf-btn-outline {
             background-color: rgba(255, 255, 255, 0.1);
@@ -308,9 +308,11 @@
 
         /* DONATION TIERS & FORM */
         .kkcf-section-donation {
-            background-color: var(--kkcf-darker);
+               background: linear-gradient(135deg, var(--kkcf-primary) 0%,#34345B 100%);
+            
+            font-size:20px;
             color: #ffffff;
-            padding: 80px 0;
+            padding: 40px 0;
         }
         .kkcf-title-white {
             color: #ffffff;
@@ -319,22 +321,30 @@
             color: var(--kkcf-text-light);
         }
         .kkcf-tiers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: flex;
+            flex-direction: row;
+            /* gap: 20px; */
+            justify-content: center;
+            align-items: center;
             margin-bottom: 60px;
         }
-        .kkcf-tier-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 24px;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: border-color 0.3s ease;
+        .pay-btn{
+            cursor: pointer;
+               background-color:var(--accent);
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
+        
+        .pay-btn a {
+    text-decoration: none;
+    color:white;
+    font-size: 18px;
+  font-weight: 400;
+}
         .kkcf-tier-card:hover {
             border-color: var(--kkcf-primary);
         }
@@ -561,7 +571,7 @@
         /* RESPONSIVE MEDIA QUERIES */
         @media (max-width: 1024px) {
             .kkcf-tiers-grid {
-                grid-template-columns: repeat(3, 1fr);
+             flex-direction: column;
             }
         }
         @media (max-width: 768px) {

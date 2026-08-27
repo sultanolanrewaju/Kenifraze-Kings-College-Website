@@ -111,7 +111,7 @@ const Donation = () => {
                 {/* <!-- Tiers --> */}
                 <div className="kkcf-tiers-grid">
                   <div className="pay-btn">
-                    <Link to="/donate" target="blank">Donate in Naira</Link>
+                    <Link to="/donate" >Donate in Naira</Link>
                     </div>
                   <div className="pay-btn">
                    <a href={link} target="blank">Donate in Dollars</a>

@@ -8,6 +8,7 @@ import Event from "./Pages/Event"
 import Donation from "./Pages/Donation"
 import DonationForm from "./Components/DonationForm"
 import VerifyDonation from "./Pages/VerifyDonation"
+import NotFound from "./Components/NotFound"
 function App() {
 
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route path="/donation" element={ <Donation/>}/>
       <Route path="/donate" element={<DonationForm/>}/>
       <Route path="/verify" element={<VerifyDonation/>}/>
+      <Route path="*" element={<NotFound />} />
     </Routes>
       
     </>

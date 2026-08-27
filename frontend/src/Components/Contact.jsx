@@ -10,9 +10,6 @@ const Contact = ()=>{
            const res = await API(`/api/admin/contact`);
            const value = res.data;
             setcontact(value[0])
-            console.log(value[0]._id);
-            
-        // console.log(res.data[0]._id);
      }
         fetch()
     },[1])

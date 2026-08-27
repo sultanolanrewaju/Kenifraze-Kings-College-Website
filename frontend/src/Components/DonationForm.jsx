@@ -37,7 +37,6 @@ const DonationForm = () => {
         // }
         // Call the payment API
         const response =  await API.post(`/api/payment/donate/initialize`,formdata)
-     console.log(response);
      
         
         const {authorization_url,reference} = response.data;

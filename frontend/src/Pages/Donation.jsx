@@ -1,20 +1,23 @@
 import { useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-// Styles
-import  "../styles/donation.css"
+// Icons
+import { AiOutlineFork,AiOutlineBook } from "react-icons/ai"
 
 // Components
 import Navbar from "../Components/Navbar"
-// import DonationCard from "../Components/DonationCard"
 import NeedCard from "../Components/NeedCard"
 import { donationTier } from "../libs/data"
-// Icons
-import { AiOutlineFork,AiOutlineBook } from "react-icons/ai"
+import Go_FUND from "../libs/api"
+import DonationForm from "../Components/DonationForm"
 import Footer from "../Components/Footer"
+
+// Styles
+import  "../styles/donation.css"
+
 const Donation = () => {
-
-
+// Variable
+ const link = import.meta.env.VITE_GO_FUND_ME ;
 
   return (
     <>
@@ -22,16 +25,6 @@ const Donation = () => {
      <Navbar/>
     <div className="kkcf-wrapper">
 
-        {/* <!-- Header --> */}
-        {/* <div className="kkcf-header">
-            <div className="kkcf-container kkcf-header-nav">
-                <div className="kkcf-logo-box">
-                    <span className="kkcf-logo-main">KKC FOUNDATION PROGRAMME</span>
-                    <span className="kkcf-logo-sub">Lagos, Nigeria</span>
-                </div>
-                <a href="#kkcf-donate-form-section" className="kkcf-btn-header">Donate Now</a>
-            </div>
-        </div> */}
 
         {/* <!-- Hero --> */}
         <section className="kkcf-hero-section">
@@ -121,7 +114,7 @@ const Donation = () => {
                     <Link to="/donate">Donate in Naira</Link>
                     </div>
                   <div className="pay-btn">
-                   <Link to="/donate">Donate in Dollars</Link>
+                   <Link to={link} target="blank">Donate in Dollars</Link>
                     </div>
 
                   </div>

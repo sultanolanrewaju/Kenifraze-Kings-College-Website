@@ -29,7 +29,6 @@ const [loading,setLoading] = useState(true)
         isLoading:isLoadingEvents,
         isError:isErrorEvents,
         } = useEvents()
-    // console.log(data,data);
     
     // Limited API data
      const limitedEvents = (events ||[]).slice(0, 3)  //Limit of the Shown events
@@ -49,14 +48,6 @@ const [loading,setLoading] = useState(true)
       toast.error("Failed to load events.")
     }
   }, [isErrorEvents])
-    
-   
-    const handleShow = (event)=>{
-        // alert("event.target.value")
-        console.log("nnn");
-        
-
-    }
     // Truncate Text
     const truncateClean = (text, maxLength = 130) => {
   if (!text) return "";

@@ -17,7 +17,7 @@ import  "../styles/donation.css"
 
 const Donation = () => {
 // Variable
- const link = import.meta.env.VITE_GO_FUND_ME ;
+ const link = import.meta.env.VITE_GO_FUND_ME;
 
   return (
     <>
@@ -114,7 +114,7 @@ const Donation = () => {
                     <Link to="/donate" >Donate in Naira</Link>
                     </div>
                   <div className="pay-btn">
-                   <a href={link} target="blank">Donate in Dollars</a>
+                   <a href="https://shorturl.at/L5Ey0" target="blank">Donate in Dollars</a>
                    {/* flatpak install flathub org.gnome.NetworkDisplays
 flatpak run org.gnome.NetworkDisplays */}
 

@@ -115,9 +115,6 @@ const Donation = () => {
                     </div>
                   <div className="pay-btn">
                    <a href="https://shorturl.at/L5Ey0" target="blank">Donate in Dollars</a>
-                   {/* flatpak install flathub org.gnome.NetworkDisplays
-flatpak run org.gnome.NetworkDisplays */}
-
                     </div>
 
                   </div>

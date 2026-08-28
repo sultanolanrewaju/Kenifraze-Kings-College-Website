@@ -29,18 +29,13 @@ const VerifyDonation = () => {
             }
 
             try {
-                console.log("Current API Base URL:", import.meta.env.VITE_API_URL);
                 // Call Backend in order to update status
                 const APicalls = API(`/api/payment/donate/verify/${reference}`).then((res)=>{
-                  console.log(res);
-                  
-                    console.log(res.data)
                     const Base = res.data?.donation;
                     setAmount(Base.amount)
                     setReferences(Base.reference)
                     setName(Base.donorfName + " "  + Base.donorlName)
                     setEmail(Base.email)
-                    console.log(Base.amount);
                     if (res.status === 200) {
                         setStatus(Base.status)
                     //    setTimeout(()=>{ navigate("/")},4000)

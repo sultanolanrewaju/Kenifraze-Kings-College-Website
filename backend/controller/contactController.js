@@ -13,18 +13,25 @@ try {
 export const postContact = async(req,res)=>{
     try {
         const {address,phone,email,school,social} = req.body;
-        const newContact = {
+        const Id = req.params.id;
+        console.log(Id);
+        const obj = {
             address,
             phone,
             email,
             school,
             social
         }
-     Contact.insertOne(newContact);
-     res.status(200).json(newContact)        
+     const newContact =await Contact.findByIdAndUpdate(Id,obj,{new: true})
+     res.status(200).json(newContact)    
+     if(newContact){
+        res.status(200).json({message:"Updated Successfully!!!"})
+     }else{
+        res.status(400).json({message:"Fail to update"})
+     }    
     } catch (error) {
             console.log("Error:" + error);
-    res.status(500).json({message:"Internal Server Error get Contact"})
+    res.status(500).json({message:"Internal Server Error patch Contact"})
     }
 }
 

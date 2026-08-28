@@ -9,7 +9,7 @@ var uploadMiddleware = upload.single("ImageUrl"); // Use the same field name as 
 // Protected Routes
 router.post("/",uploadMiddleware,postEvent)
 router.put("/:id",uploadMiddleware,putEvent)
-router.patch("/:id",uploadMiddleware,patchEvent)
+router.patch("/:id",patchEvent)
 router.delete("/",deleteAllEvent)
 router.delete("/:id",deleteOneEvent)
 

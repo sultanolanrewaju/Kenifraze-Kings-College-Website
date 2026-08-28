@@ -101,18 +101,12 @@ export const patchEvent= async(req,res)=>{
   try{
     const Id = req.params.id;
   const {title,description,date,location} = req.body;
-   const findEvent = await Event.findByIdAndUpdate(Id)
+   const findEvent = await Event.findById(Id)
    if(!findEvent){
     return res.status(404).send("Event not found")
    }
    const imageUrl = req.file ? req.file.path : findEvent.ImageUrl;
-   const updatedEvent = await Event.findByIdAndUpdate(Id,{
-    title,
-    description,
-    date,
-    location,
-    ImageUrl:imageUrl
-   })
+   const updatedEvent = await Event.update(Id,{$set:req.body})
   }catch(error){ 
   res.send("Error in patch Event Controller : ",error)
 }

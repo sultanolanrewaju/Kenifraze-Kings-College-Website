@@ -4,7 +4,7 @@ import { deleteContact, getContact, postContact } from "../controller/contactCon
 const router = express.Router();
 
 router.get("/",getContact)
-router.post("/",postContact)
+router.patch("/:id",postContact)
 router.delete("/",deleteContact)
 
 export default router

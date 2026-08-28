@@ -13,7 +13,7 @@ const AddHero = () => {
 	const msgRef = useRef(null);
 
 	useEffect(() => {
-		fetchHero();
+		// fetchHero();
 	}, []);
 
 	const validate = () => {

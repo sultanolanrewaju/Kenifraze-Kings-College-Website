@@ -106,3 +106,15 @@ export const deleteInstructor = async(req,res)=>{
     res.status(500).send("Error in Delete Instructor Controller",error)
   }
 } 
+export const deleteallInstructor = async(req,res)=>{
+  try {
+    const Id = req.params.id;
+    const deletedInstructor = await Instructor.deleteMany();
+    if(!deletedInstructor){
+      return res.status(404).send("Instructor not found")
+    }
+    res.status(200).send(`${deletedInstructor.name} deleted successfully`)  
+  } catch (error) { 
+    res.status(500).send("Error in Delete Instructor Controller",error)
+  }
+} 

@@ -3,7 +3,7 @@ import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai"
 const slidesData = [
 	{
 		src: "/IMAGES/group_photo.jpg",
-		alt: "students",
+		alt: "Kenifraze Kings College Students",
 		title: "Welcome to KKC",
 		description: "Inspiring excellence and leadership for a brighter future."
 		,btnText : "Explore Our Campus",
@@ -13,21 +13,21 @@ const slidesData = [
 	{
 		src: "/IMAGES/graduands.jpg",
 		alt: "Makeup artist",
-		title: "Academic Excellence",
+		title: "Kenifraze Kings College Students",
 		description: "Providing quality education in a modern learning environment.",
 		btnText : "Learn More",
 		btnLink : ""
 	},
 	{
 		src: "/IMAGES/COVER3.jpeg",
-		alt: "Students.",
+		alt: "Kenifraze Kings College Students",
 		title: "Unlocking Hidden Potentials",
 		description: "Uncovering hidden potential and revealing students creativity."
 		,btnText : "Build Profile",
 		btnLink : ""},
 	{
 	 	src: "/IMAGES/COVER4.jpeg",
-	 	alt: "Students",
+	 	alt: "Kenifraze Kings College Students",
 	 	title: "Building Future Leaders",
 	 	description: "Empowering students with knowledge, values, and confidence."
 	,	btnText : "Join Us Today",

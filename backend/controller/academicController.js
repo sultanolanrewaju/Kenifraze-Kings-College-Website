@@ -71,7 +71,7 @@ export const updateAcademic = async(req,res)=>{
       const Id = req.params.id;
       const {title,description,category,ImageUrl} = req.body;
       // Find the existing academic post
-      const findacademic = await academic.findById(Id);
+      // const findacademic = await academic.findByIdAndUpdate(Id,{...req.body,ImageUrl:imageUrl},{new:true})  
       if (!findacademic) {
          return res.status(404).json({message:"Academic Post not found"})
       }
@@ -81,7 +81,7 @@ export const updateAcademic = async(req,res)=>{
          description,
          category,
          ImageUrl:imageUrl
-      })
+      },{new:true})
       res.status(200).json(updateacademic)
    } catch (error) {
       console.log("Error in Academic put controller" + error);
@@ -93,18 +93,19 @@ export const updateAcademic = async(req,res)=>{
 // Update using patch
 export const UpdateSpecific = async(req,res)=>{
    try {
+      const imageUrl = req.file ? req.file.path : findacademic.ImageUrl;
       const {title,description,category,ImageUrl} = req.body;
       const Id = req.params.id;
       const findacademic = await academic.findById(Id);
     if (!findacademic) {
       return res.status(404).json({message:"Academic Post not found"})
     }
-    const imageUrl = req.file ? req.file.path : findacademic.ImageUrl;
-    const updatedAcademic = await academic.findByIdAndUpdate(Id,{
+    const obj = {
      title,
      description,
      ImageUrl:imageUrl
-    })
+    }
+    const updatedAcademic = await academic.findByIdAndUpdate(Id,obj,{returnDocument:"after"})
    } catch (error) {
       console.log("Error in Academic patch controller" + error);
       res.status(500).json({error:error})

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Kenifraze Kings College</title>
+  <style>
+    /* Premium Scholarly Color Palette & Token Definitions */
+    :root {
+      --bg-editorial-cream: #faf8f5; /* Soft, non-deep background canvas */
+      --text-velvet-navy: #0f172a;    /* High-contrast deep authoritative velvet */
+      --accent-muted-gold: #c5a880;   /* Muted gold boundary markers */
+      --card-pure-white: #ffffff;
+      --border-parchment: #eae3da;
+      --link-accent-blue: #2563eb;
+    }
+
+    /* Core Baseline Resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif; /* Classical academic base layout */
+      background-color: var(--bg-editorial-cream);
+      color: var(--text-velvet-navy);
+      line-height: 1.7;
+    }
+
+    /* Utility Class for Modern System Typography Accents */
+    .system-font {
+      font-family: system-ui, -apple-system, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* 1. UPPER FLAT EMBEDDED NAVIGATION BAR */
+    header {
+      border-bottom: 1px solid var(--border-parchment);
+      padding: 24px 40px;
+      background-color: var(--bg-editorial-cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .branding-core {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .branding-core .badge {
+      background-color: var(--text-velvet-navy);
+      color: var(--bg-editorial-cream);
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .branding-core h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--text-velvet-navy);
+    }
+
+    nav a.donation-btn {
+      background-color: var(--link-accent-blue);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+
+    /* 2. ANCHOR HEADING ROW */
+    .editorial-hero {
+      max-width: 1100px;
+      margin: 90px auto 60px auto;
+      padding: 0 40px;
+    }
+
+    .editorial-hero span {
+      display: block;
+      color: var(--accent-muted-gold);
+      margin-bottom: 16px;
+    }
+
+    .editorial-hero h2 {
+      font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      max-width: 900px;
+    }
+
+    /* 3. STAGGERED Z-PATTERN CONTENT FRAMEWORKS */
+    .storytelling-canvas {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .narrative-strip {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+      margin-bottom: 100px;
+    }
+
+    .narrative-strip:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .strip-meta {
+      flex: 0 0 250px;
+      border-top: 2px solid var(--text-velvet-navy);
+      padding-top: 16px;
+    }
+
+    .strip-meta h3 {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .strip-body {
+      flex: 1;
+    }
+
+    .strip-body p {
+      font-size: 19px;
+      color: #334155;
+      margin-bottom: 24px;
+    }
+
+    .fb-action-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--link-accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      gap: 6px;
+    }
+
+    .asset-box-placeholder {
+      background-color: var(--card-pure-white);
+      border: 1px solid var(--border-parchment);
+      border-radius: 4px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* 💡 NEW ADDITION SECTION A: METRICS BAND */
+    .metrics-band {
+      background-color: var(--text-velvet-navy);
+      color: var(--bg-editorial-cream);
+      padding: 80px 40px;
+      margin: 100px 0;
+    }
+
+    .metrics-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .metric-card {
+      border-left: 1px solid rgba(250, 248, 245, 0.2);
+      padding-left: 24px;
+    }
+
+    .metric-card h4 {
+      font-size: 44px;
+      color: var(--accent-muted-gold);
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+
+    .metric-card p {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* 💡 NEW ADDITION SECTION B: CORE VALUES CORE PILLARS */
+    .values-section {
+      max-width: 1100px;
+      margin: 120px auto;
+      padding: 0 40px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .value-card {
+      background-color: #f5f1ea; /* Soft light tinted gray background block */
+      border: 1px solid var(--border-parchment);
+      padding: 32px;
+      border-radius: 4px;
+    }
+
+    .value-card h4 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      font-size: 15px;
+      color: #475569;
+    }
+
+    /* 4. FACULTY ROSTER PLACEMENT */
+    .faculty-section {
+      max-width: 1100px;
+      margin: 120px auto 160px auto;
+      padding: 0 40px;
+    }
+
+    .faculty-section-header {
+      margin-bottom: 40px;
+    }
+
+    .faculty-section-header h2 {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .faculty-section-header p {
+      color: #475569;
+      max-width: 600px;
+    }
+
+    .editorial-status-box {
+      background-color: var(--card-pure-white);
+      border: 1px solid var(--border-parchment);
+      padding: 44px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .editorial-status-box p {
+      max-width: 520px;
+      margin: 0 auto;
+      color: #475569;
+      font-size: 16px;
+    }
+
+    /* 5. FOOTER LAYER */
+    footer {
+      background-color: #f5efe6;
+      border-top: 1px solid var(--border-parchment);
+      padding: 60px 40px;
+    }
+
+    .footer-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-left-pillar p {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .dev-signature {
+      margin-top: 24px;
+      color: var(--text-velvet-navy);
+      font-size: 13px;
+    }
+
+    .footer-right-pillar {
+      text-align: right;
+    }
+
+    .contact-line {
+      font-size: 15px;
+      color: var(--text-velvet-navy);
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 850px) {
+      .nav-wrapper, .metrics-wrapper, .values-grid, .footer-wrapper {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+      .narrative-strip, .narrative-strip:nth-child(even) {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .footer-right-pillar { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. NAVIGATION BAR LAYER -->
+  <header>
+    <div class="nav-wrapper system-font">
+      <div class="branding-core">
+        <span class="badge">KKC</span>
+        <h1>Kenifraze Kings College</h1>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#academics">Academics</a>
+        <a href="#about" class="active">About</a>
+        <a href="#donation" class="donation-btn">Donation</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. ANCHOR HEADING ROW -->
+  <div class="editorial-hero">
+    <span class="system-font">Institutional Profile</span>
+    <h2>Our Vision for Excellence</h2>
+  </div>
+
+  <!-- 3. CHRONOLOGICAL STORY NARRATION BLOCKS -->
+  <main class="storytelling-canvas">
+    <article class="narrative-strip">
+      <div class="strip-meta">
+        <span class="system-font" style="color: var(--accent-muted-gold); display:block; margin-bottom:4px;">Context I</span>
+        <h3>The Foundation</h3>
+      </div>
+      <div class="strip-body">
+        <p>Kenifraze Kings College has been at the forefront of modern education for over two decades. We foster an inclusive environment where intellectual curiosity is paired with social responsibility.</p>
+        <p>Our curriculum is designed to stimulate critical thinking and creativity, preparing students not just for higher education, but for the dynamic challenges of tomorrow's global landscape.</p>
+        <a href="https://facebook.com" class="fb-action-link" target="_blank" rel="noreferrer">
+          <span class="system-font">🔵 Connect via Facebook</span>
+        </a>
+      </div>
+    </article>
+
+    <article class="narrative-strip">
+      <div class="strip-meta">
+        <span class="system-font" style="color: var(--accent-muted-gold); display:block; margin-bottom:4px;">Context II</span>
+        <h3>Campus Life</h3>
+      </div>
+      <div class="strip-body">
+        <div class="asset-box-placeholder">
+          <span>📷 Showcase: Students studying together</span>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- 💡 EXPANSION SECTION A: INSTITUTIONAL METRICS -->
+  <section class="metrics-band">
+    <div class="metrics-wrapper">
+      <div class="metric-card">
+        <h4>20+</h4>
+        <p>Years of Academic Excellence</p>
+      </div>
+      <div class="metric-card">
+        <h4>100%</h4>
+        <p>Practical Digital & ICT Immersion</p>
+      </div>
+      <div class="metric-card">
+        <h4>Surulere</h4>
+        <p>Lagos Community Impact Footprint</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💡 EXPANSION SECTION B: CORE VALUES BLOCK SYSTEM -->

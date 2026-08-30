@@ -1,4 +1,4 @@
-
+/* Merged Root Variable Canvas definitions */
 :root {
     --primary-color: #2c3e50;
     --accent: #e74c3c;
@@ -8,140 +8,230 @@
     --light-bg: #f8f9fa;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-        /* About Section (Mission/Vision) */
-        .about-intro {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
 
-        .intro-text h2 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
+/* Base Wrapper scope isolation container */
+.profile-page-wrapper {
+  font-family: 'Georgia', serif;
+  background-color: #ffffff; 
+  color: var(--primary-color);
+  line-height: 1.7;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
 
-        .intro-text h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent);
-            margin-top: 0.5rem;
-        }
+.profile-page-wrapper * {
+  box-sizing: border-box;
+}
 
-        .intro-text p {
-            margin-bottom: 1.2rem;
-            color: var(--btn);
-            font-size: 1.05rem;
-        }
+/* Structural Interface Elements (Sans-Serif) */
+.interface-font {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 600;
+}
 
-        .intro-image img {
-            width: 100%;
-            height:auto;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-        }
+.core-accent-text {
+  color: var(--accent-color);
+}
 
-        /* Instructors / Faculty Section */
-        .faculty-section {
-            background-color: #fff;
-            padding: 5rem 2rem;
-        }
+/* 1. NOTIFICATION BANNER LAYER */
+.editorial-notice {
+  background-color: var(--light-bg); 
+  border-bottom: 1px solid #e2e8f0;
+  padding: 14px 24px;
+  text-align: center;
+  color: var(--text-muted);
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
+/* 2. ASYMMETRIC ENTRY ZONE */
+.hero-editorial {
+  max-width: 1000px;
+  margin: 100px auto 140px auto;
+  padding: 0 40px;
+}
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
+.hero-editorial h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--primary-color);
+  max-width: 800px;
+}
 
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+/* 3. STAGGERED GRID NARRATIVE LINES */
+.narrative-system {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
 
-        .faculty-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        /* Teachers Card */
+.narrative-block {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  margin-bottom: 160px;
+}
 
-        .faculty-card {
-            background: var(--light-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.narrative-block:nth-child(even) {
+  flex-direction: row-reverse;
+}
 
-        .faculty-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
+.narrative-meta {
+  flex: 0 0 250px;
+  border-top: 2px solid var(--primary-color);
+  padding-top: 16px;
+}
 
-        .image-wrapper {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            background-color: #ddd;
-            position: relative;
-        }
+.narrative-meta h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
 
-        .faculty-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.narrative-body {
+  flex: 1;
+}
 
-        .faculty-card:hover img {
-            transform: scale(1.05);
-        }
+.narrative-body p {
+  font-size: 20px;
+  color: #475569;
+  margin-bottom: 28px;
+}
 
-        .faculty-info {
-            padding: 1.8rem;
-        }
+.social-media-link-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
 
-        .faculty-name {
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            margin-bottom: 0.2rem;
-            font-weight: 700;
-        }
+.fb-action-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: opacity 0.2s ease;
+}
 
-        .faculty-subject {
-            display: inline-block;
-            background-color: rgba(231, 76, 60, 0.1);
-            color: var(--accent-color);
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.fb-action-link:hover {
+  opacity: 0.8;
+}
 
-        .faculty-bio {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+/* 🚀 FIXED IMAGE OVERFLOW & FACE CROP WRAPPERS */
+.intro-image-frame {
+  width: 100%;
+  max-width: 100%;
+  height: 450px;         /* Generous desktop bounding box height */
+  overflow: hidden;      
+  border-radius: 6px;
+  box-shadow: var(--card-shadow);
+  background-color: var(--light-bg);
+  padding: 8px;          /* Creates an elegant framing boundary edge */
+  border: 1px solid #e2e8f0;
+}
 
+.editorial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Scales completely within bounding margins without warping */
+  object-position: top 50%;  /* 🚀 CRITICAL: Pinpoints focus upwards to keep faces visible */
+  border-radius: 2px;
+  display: block;        
+}
 
+/* 4. SOLID HIGHLIGHT CONTAINER BLOCK */
+.stat-canvas {
+  background-color: var(--primary-color); 
+  color: var(--light-bg);
+  padding: 100px 40px;
+  margin: 100px 0;
+}
+
+.stat-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.stat-card {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding-left: 24px;
+}
+
+.stat-card h4 {
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--accent-color); 
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.stat-card p {
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: #cbd5e1;
+}
+
+/* 5. INSTRUCTOR COUNCIL BLOCK */
+.roster-container {
+  max-width: 1100px;
+  margin: 120px auto;
+  padding: 0 40px;
+}
+
+.roster-header {
+  margin-bottom: 48px;
+  max-width: 500px;
+}
+
+.roster-header h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+
+/* Flex Container for Instructor Card Listings */
+.cards-flex-system {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.roster-placeholder-card {
+  background-color: var(--light-bg);
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: var(--card-shadow); 
+}
+
+.roster-placeholder-card p {
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--text-muted);
+}
+
+/* Responsive Structural Breakpoints */
+@media(max-width: 850px) {
+  .narrative-block, .narrative-block:nth-child(even) {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .stat-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-editorial {
+    margin: 60px auto;
+  }
+  .intro-image-frame {
+    height: 280px; /* Reduces landscape window tallness on smaller mobile devices */
+  }
+}

@@ -8,6 +8,7 @@ import AcademicRoutes from "./routes/AcademicRoutes.js"
 import InstructorRoutes from "./routes/InstructorRoute.js"
 import PaymentRoutes from "./routes/PaymentRoutes.js"
 import ContactRoutes from "./routes/ContactRoutes.js"
+import emailRoute from "./routes/emailRoute.js"
 import { configDotenv } from 'dotenv';
 
 import cors from "cors"
@@ -37,6 +38,7 @@ app.use("/api/admin/academics",AcademicRoutes)
 app.use("/api/admin/instructors",InstructorRoutes)
 app.use("/api/admin/contact",ContactRoutes)
 app.use("/api/payment/donate",PaymentRoutes)
+app.use("/api/admin/mail",emailRoute)
 
 
 

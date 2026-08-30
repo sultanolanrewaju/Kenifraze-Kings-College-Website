@@ -8,6 +8,7 @@ import API from '../libs/api'
 import  "../styles/donation.css"
 import { toast } from 'sonner'
 const DonationForm = () => {
+    const [message,setMessage] = useState("")
     const [error,setError] = useState("")
         // Payment Data
     const[formdata,setFormData] = useState({
@@ -30,7 +31,9 @@ const DonationForm = () => {
          
          try {
         if(!formdata.amount||!formdata.donorfName.trim() || !formdata.donorlName.trim() || !formdata.email.trim() ){
-            toast.error("Input Your Information!")
+            setMessage("Input your Information")
+        }else{
+            setMessage("")
         }
         // const payload = {
 
@@ -48,12 +51,14 @@ const DonationForm = () => {
 
     } catch (error) {
         console.error("Initializing error",error);
-        toast.error("Error While Making Donation")
+        // toast.error("Error While Making Donation")
         // alert(error.response?.data?.error || "Failed to initialize payment")
     }finally{
         setLoading(false)
     }
 };
+
+
   return (
    <>
    <Navbar/>
@@ -64,10 +69,14 @@ const DonationForm = () => {
                 <div className="kkcf-form-box">
                     <h3 className="kkcf-form-title">Be the Reason a Child Never Gives Up</h3>
                     <p className="kkcf-form-subtitle">Secure Custom Donation Checkout</p>
-                    
+                    {
+                        message &&(
+                             <span  id="message">{message}</span>
+                        )
+                    }
                     <form id="kkcfCheckoutForm" onSubmit={handleDonate}>
                         <div className="kkcf-form-group">
-                            <label className="kkcf-form-label">Gift Amount ($ USD)</label>
+                            <label className="kkcf-form-label">Gift Amount (₦ NGN)</label>
                             <div className="kkcf-input-wrapper">
                                 <span className="kkcf-input-icon">₦</span>
                                 <input type="number" name="amount" value={formdata.amount} onChange={handleChange} id="kkcfInputAmount"  className="kkcf-input-amount"/>

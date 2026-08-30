@@ -3,299 +3,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Oakridge Academy</title>
-  
+  <title>About Us | Kenifraze Kings College</title>
   <style>
-    /* Base Styles & CSS Variables */
-    :root {
-      --primary-color: #0d3b66;
-      --accent-color: #f4d35e;
-      --secondary-color: #f7fff7;
-      --text-color: #2b2d42;
-      --text-muted: #6c757d;
-      --light-bg: #f8f9fa;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
+    /* Global Styles & Reset */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: var(--font-main);
-      color: var(--text-color);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
       line-height: 1.6;
-      background-color: #fff;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
+    /* 1. Header Navigation Layout */
+    header {
+      background-color: #0f172a; /* Deep authoritative blue for branding */
+      color: #ffffff;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Circular Image Helper */
-    .circular-img {
-      width: 100%;
-      max-width: 280px;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(13, 59, 102, 0.85), rgba(13, 59, 102, 0.85)), url('hero-bg.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 5rem 0;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Welcome Section */
-    .welcome-section {
-      padding: 5rem 1.5rem;
-    }
-
-    .welcome-grid {
+    .nav-container {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .welcome-text .subheading {
-      text-transform: uppercase;
-      color: var(--primary-color);
+    .school-branding {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      background-color: #2563eb;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
+      font-size: 14px;
     }
 
-    .welcome-text h2 {
-      font-size: 2rem;
-      margin: 0.5rem 0 1rem;
+    .school-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
-    .welcome-text p {
-      margin-bottom: 1rem;
-      color: var(--text-muted);
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
-    .welcome-text .signature {
-      font-weight: 600;
-      color: var(--primary-color);
-      margin-top: 1.5rem;
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
     }
 
-    /* Stats Bar */
-    .stats-bar {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 3rem 0;
+    nav a:hover, nav a.active {
+      color: #ffffff;
     }
 
-    .stats-grid {
+    nav a.donation-btn {
+      background-color: #2563eb;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 6px;
+    }
+
+    nav a.donation-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* 2. Vision Split Grid Section */
+    .story-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .story-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .stat-item h3 {
-      font-size: 2.5rem;
-      color: var(--accent-color);
-    }
-
-    .stat-item p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-    }
-
-    /* Guiding Pillars */
-    .pillars-section {
-      padding: 5rem 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
+      font-size: 32px;
+      color: #0f172a;
+      margin-bottom: 20px;
+      position: relative;
     }
 
-    .section-title h2 {
-      font-size: 2rem;
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #2563eb;
+      margin-top: 8px;
+      border-radius: 2px;
     }
 
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+    .story-paragraph {
+      font-size: 16px;
+      color: #475569;
+      margin-bottom: 20px;
     }
 
-    .pillar-card {
-      background: var(--light-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border-top: 4px solid var(--primary-color);
-    }
-
-    .pillar-card h3 {
-      margin-bottom: 0.75rem;
-      color: var(--primary-color);
-    }
-
-    /* Call to Action */
-    .cta-section {
-      text-align: center;
-      padding: 4rem 1.5rem;
-      background-color: var(--secondary-color);
-      border-radius: 12px;
-      margin-bottom: 4rem;
-    }
-
-    .cta-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .cta-buttons {
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.75rem;
-      border-radius: 4px;
+    .facebook-link {
+      display: inline-flex;
+      align-items: center;
+      color: #2563eb;
       text-decoration: none;
       font-weight: 600;
-      transition: opacity 0.2s ease;
+      gap: 8px;
     }
 
-    .btn:hover {
-      opacity: 0.9;
+    .facebook-link:hover {
+      text-decoration: underline;
     }
 
-    .primary-btn {
-      background-color: var(--primary-color);
-      color: #fff;
+    /* Visual Placeholder for Students Photo */
+    .image-container {
+      background-color: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+      font-weight: 500;
+      box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.02);
     }
 
-    .secondary-btn {
-      background-color: var(--accent-color);
-      color: var(--text-color);
+    /* 3. Instructors Section Layout */
+    .instructors-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
     }
 
-    /* Responsive Media Queries */
-    @media (min-width: 768px) {
-      .welcome-grid {
-        flex-direction: row;
-        text-align: left;
+    .instructors-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 40px auto;
+    }
+
+    .instructors-header h2 {
+      font-size: 28px;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .instructors-header p {
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    /* 🌟 The Soft, Non-Deep Pastel Fallback Notice */
+    .fallback-box {
+      background-color: #f0fdf4; /* Very soft pastel light green tint */
+      border: 1px solid #bbf7d0;  /* Subtle coordinating light border */
+      color: #166534;            /* Highly readable contrast dark green text */
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 500;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+    }
+
+    /* 4. Footer Layout */
+    footer {
+      background-color: #f8fafc; /* Light grey block separation */
+      border-top: 1px solid #e2e8f0;
+      padding: 40px 20px;
+      margin-top: 100px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .footer-left p {
+      margin-bottom: 6px;
+    }
+
+    .dev-credit {
+      font-weight: 500;
+      color: #334155;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .contact-item {
+      margin-bottom: 6px;
+    }
+
+    /* Mobile Responsive Rules */
+    @media (max-width: 768px) {
+      .nav-container, .story-grid, .footer-container {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
       }
-      
-      .welcome-image {
-        flex-shrink: 0;
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .footer-right {
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container hero-content">
-      <h1>About Oakridge Academy</h1>
-      <p>Empowering minds, inspiring character, and building tomorrow's leaders since 1995.</p>
+  <!-- 1. HEADER SECTION -->
+  <header>
+    <div class="nav-container">
+      <div class="school-branding">
+        <span class="logo-badge">KKC</span>
+        <h1 class="school-title">KENIFRAZE KINGS COLLEGE</h1>
+      </div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#academics">Academics</a>
+        <a href="#about" class="active">About</a>
+        <a href="#donation" class="donation-btn">Donation</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Welcome Message Section -->
-    <section class="welcome-section container">
-      <div class="welcome-grid">
-        <div class="welcome-image">
-          <img src="principal.jpg" alt="Principal Dr. Elena Vance" class="circular-img">
-        </div>
-        <div class="welcome-text">
-          <span class="subheading">Welcome from the Principal</span>
-          <h2>A Heritage of Excellence</h2>
-          <p>Welcome to Oakridge Academy. For over three decades, our dedicated faculty and vibrant community have provided a nurturing environment where academic rigor meets holistic personal development. We believe every student possesses unique potential waiting to be unlocked.</p>
-          <p class="signature">— Dr. Elena Vance, Head of School</p>
-        </div>
+  <!-- 2. MAIN ABOUT SECTION -->
+  <main class="story-section">
+    <div class="story-grid">
+      
+      <!-- Text Column -->
+      <div class="story-content">
+        <h2 class="section-title">Our Vision for Excellence</h2>
+        <p class="story-paragraph">
+          Kenifraze Kings College has been at the forefront of modern education for over two decades. 
+          We foster an inclusive environment where intellectual curiosity is paired with social responsibility.
+        </p>
+        <p class="story-paragraph">
+          Our curriculum is designed to stimulate critical thinking and creativity, preparing students 
+          not just for higher education, but for the dynamic challenges of tomorrow's global landscape.
+        </p>
+        <a href="https://facebook.com" class="facebook-link" target="_blank" rel="noreferrer">
+          🌐 Find us on Facebook
+        </a>
       </div>
-    </section>
 
-    <!-- Key Statistics Bar -->
-    <section class="stats-bar">
-      <div class="container stats-grid">
-        <div class="stat-item">
-          <h3>12:1</h3>
-          <p>Student-Teacher Ratio</p>
-        </div>
-        <div class="stat-item">
-          <h3>98%</h3>
-          <p>College Acceptance Rate</p>
-        </div>
-        <div class="stat-item">
-          <h3>35+</h3>
-          <p>Extracurricular Clubs</p>
-        </div>
-        <div class="stat-item">
-          <h3>100%</h3>
-          <p>Dedicated Faculty</p>
-        </div>
+      <!-- Image Column Placeholding -->
+      <div class="image-container">
+        <span>📷 [Photo: Students studying together]</span>
       </div>
-    </section>
 
-    <!-- Mission, Vision & Values -->
-    <section class="pillars-section container">
-      <div class="section-title">
-        <h2>Guiding Pillars</h2>
-      </div>
-      <div class="pillars-grid">
-        <div class="pillar-card">
-          <h3>Our Mission</h3>
-          <p>To cultivate intellectual curiosity, ethical leadership, and creative problem-solving in a diverse and inclusive environment.</p>
-        </div>
-        <div class="pillar-card">
-          <h3>Our Vision</h3>
-          <p>To be a global benchmark in transformative K-12 education, shaping compassionate leaders who make a positive impact.</p>
-        </div>
-        <div class="pillar-card">
-          <h3>Our Core Values</h3>
-          <p>Integrity, Innovation, Respect, Empathy, and a lifelong commitment to personal and academic Excellence.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Call To Action -->
-    <section class="cta-section container">
-      <h2>Ready to Join Our Community?</h2>
-      <p>Discover how Oakridge Academy can shape your child's future.</p>
-      <div class="cta-buttons">
-        <a href="#schedule-tour" class="btn primary-btn">Schedule a Tour</a>
-        <a href="#apply" class="btn secondary-btn">Apply Now</a>
-      </div>
-    </section>
+    </div>
   </main>
+
+  <!-- 3. INSTRUCTORS SECTION -->
+  <section class="instructors-section">
+    <div class="instructors-header">
+      <h2>Meet Our Instructors</h2>
+      <p>Learn from a dedicated team of passionate educators and subject matter experts committed to helping every student thrive.</p>
+    </div>
+
+    <!-- Soft Pastel Green Message Box Replacement -->
+    <div class="fallback-box">
+      🏫 Faculty profiles are currently being updated for the upcoming session. Please check back shortly!
+    </div>
+  </section>
+
+  <!-- 4. FOOTER SECTION -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>&copy; 2026 KENIFRAZE KINGS COLLEGE. All Rights Reserved.</p>
+        <p class="dev-credit">Developed By: Sultan</p>
+      </div>
+      <div class="footer-right">
+        <p class="contact-item">📍 33 Oshogbo Street, Lagos, Nigeria</p>
+        <p class="contact-item">📞 +234 813-4541356 | 08024420091</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

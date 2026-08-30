@@ -1,24 +1,48 @@
-// import { Resend } from 'resend';
-// import "dotenv/config";
+import dns from 'node:dns';
+dns.setDefaultResultOrder('ipv4first');
 
-// console.log(process.env.RESEND_API_KEY);
-// const resend = new Resend(process.env.RESEND_API_KEY);
+import { Resend } from "resend";
+import "dotenv/config";
 
-// async function runTest() {
-//   console.log("Sending email...");
+const resend = new Resend(process.env.RESEND_API_KEY?.trim());
 
-//   const { data, error } = await resend.emails.send({
-//     from: 'onboarding@resend.dev', // Default testing sender address required by Resend
-//     to: 'sultanolanrewaju65@gmail.com', // Must match your registered Resend account email during testing
-//     subject: 'Hello World',
-//     html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-//   });
+export const sendMail = async (req, res) => {
+  const { name, phone, email, message } = req.body;
 
-//   if (error) {
-//     return console.error("Failed to send email:", error);
-//   }
+  // 1. Correct validation logic (checks that ALL fields exist)
+  if (!name || !phone || !email || !message) {
+    console.log("Validation Failed: Missing required fields");
+    return res.status(400).json({ error: "Please provide all required fields." });
+  }
 
-//   console.log("Email sent successfully! Response Data:", data);
-// }
+  try {
+    // 2. Destructure data and error from Resend response
+    const { data, error } = await resend.emails.send({
+      from: "Sultan Dev <onboarding@resend.dev>", // MUST include email address
+      to: "sultanolanrewaju65@gmail.com",          // Must match your Resend account email during testing
+      replyTo: email,
+      subject: `Inquiry from ${name}`,
+      html: `
+        <h3>New Contact Inquiry</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    });
 
-// runTest();
+    // 3. Handle Resend API error cleanly
+    if (error) {
+      console.error("Resend API Error:", error);
+      return res.status(400).json({ error: error.message });
+    }
+
+    console.log("Email sent successfully:", data);
+    return res.status(200).json({ message: "Email Sent Successfully!!!", data });
+
+  } catch (error) {
+    console.error("Server Catch Error: ", error);
+    return res.status(500).json({ error: "Internal Server Error while sending email" });
+  }
+};

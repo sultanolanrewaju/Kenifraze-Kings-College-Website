@@ -4,7 +4,7 @@ dns.setDefaultResultOrder('ipv4first');
 import { Resend } from "resend";
 import "dotenv/config";
 
-const resend = new Resend(process.env.RESEND_API_KEY?.trim());
+const resend = new Resend(process.env.RESEND_API_KEY.trim());
 
 export const sendMail = async (req, res) => {
   const { name, phone, email, message } = req.body;

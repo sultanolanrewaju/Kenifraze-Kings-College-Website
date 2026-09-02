@@ -8,15 +8,16 @@ import AcademicRoutes from "./routes/AcademicRoutes.js"
 import InstructorRoutes from "./routes/InstructorRoute.js"
 import PaymentRoutes from "./routes/PaymentRoutes.js"
 import ContactRoutes from "./routes/ContactRoutes.js"
+import dashboardRoutes from "./routes/dashboardRoutes.js"
 import emailRoute from "./routes/emailRoute.js"
 import { configDotenv } from 'dotenv';
 
 import cors from "cors"
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 const allowedOrigins = [
   "http://localhost:5173",
-   "http://localhost:5001",
+   "http://localhost:5174",
   "https://kenifraze-kings-college-website-ten.vercel.app",
   "https://kenifrazekingscollege.com",
   "https://www.kenifrazekingscollege.com"
@@ -30,7 +31,9 @@ app.use(cors({
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH','OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use("/api/admin/events",EventsRoutes)
@@ -39,12 +42,12 @@ app.use("/api/admin/instructors",InstructorRoutes)
 app.use("/api/admin/contact",ContactRoutes)
 app.use("/api/payment/donate",PaymentRoutes)
 app.use("/api/admin/mail",emailRoute)
-
+app.use("/api/dashboard",dashboardRoutes)
 
 
 // Local 
 // MOngoURI = process.env.MONGO_URI ||
-console.log(process.env.MONGO_URI);
+// console.log(process.env.MONGO_URI || "mongod://localhost:27017/kkcDb");
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
   console.log("Mongodb Connected Successfully!!");

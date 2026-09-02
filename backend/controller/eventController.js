@@ -48,7 +48,7 @@ try {
     ImageUrl:imageUrl
    })
    await newEvent.save()
-    res.send("Event added Successfully")
+    res.status(200).json(newEvent)
   } catch (error) {
     console.log(error);
     if (error.code === 11000) {

@@ -19,7 +19,7 @@ export const sendMail = async (req, res) => {
   try {
     // 2. Destructure data and error from Resend response
     const { data, error } = await resend.emails.send({
-      from: "Sultan Dev <onboarding@resend.dev>", // MUST include email address
+      from: "Kenifraze Kings COllege <support@kenifrazekingscollege.com>", // MUST include email address
       to: "sultanolanrewaju65@gmail.com",          // Must match your Resend account email during testing
       replyTo: email,
       subject:`🎓 New Inquiry from ${name}`,

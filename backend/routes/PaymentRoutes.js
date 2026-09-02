@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 // Get all Donor
-router.get("/donors",getDonor)
+router.get("/",getDonor)
 
 // GET /api/payment/donate/verify/:reference
 router.get('/verify/:reference', verifyDonation);

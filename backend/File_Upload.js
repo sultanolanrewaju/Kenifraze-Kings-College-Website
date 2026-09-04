@@ -1,33 +1,28 @@
-import express from "express"
-const app = express();
+// import Admin from "./models/Admin.js";
+// import "dotenv/config"
+// import express from "express";
+// import mongoose from "mongoose";
 
-import multer from "multer";
+// const app = express();
+// Create Admin First
+// export const createAdmin = async(req,res)=>{
+//     const admin = new Admin({
+//        email:process.env.EMAIL,
+//        password:process.env.PASSWORD
+//     })
+//     await admin.save()
+// }
 
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,"./uploads");
-    },
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname);
-    },
-});
+// mongoose.connect(process.env.MONGO_URI).then(()=>{
+//   console.log("Mongodb Connected Successfully!!");
+//   createAdmin().then(()=>{
+//   app.listen(process.env.PORT,"0.0.0.0",()=>{
+//       console.log(`Server Is running on port http://localhost:${process.env.PORT}`)
+//   });
+// })
+// })
 
-const upload = multer({storage})
-
-
-app.use(express.json());
-
-app.get("/",(req,res)=>{
-    res.send("Hello World");
-})
-
-app.post("/api/upload",upload.single("file"),(req,res)=>{
-    res.send("Uploaded Successfully")
-    console.log(req.file);
-})
-
-
-app.listen(3000,()=>{
-    console.log("Server is up an running");
-    
-})
+//     console.log("Admin Created Successfully!!")
+// }).catch((err)=>{
+//     console.log(err)
+// })  

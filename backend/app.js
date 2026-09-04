@@ -10,6 +10,7 @@ import PaymentRoutes from "./routes/PaymentRoutes.js"
 import ContactRoutes from "./routes/ContactRoutes.js"
 import dashboardRoutes from "./routes/dashboardRoutes.js"
 import emailRoute from "./routes/emailRoute.js"
+import AdminRoute from "./routes/AdminRoute.js"
 import { configDotenv } from 'dotenv';
 
 import cors from "cors"
@@ -36,6 +37,8 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Login Route
+app.use("/api/admin/",AdminRoute)
 app.use("/api/admin/events",EventsRoutes)
 app.use("/api/admin/academics",AcademicRoutes)
 app.use("/api/admin/instructors",InstructorRoutes)
@@ -44,12 +47,12 @@ app.use("/api/payment/donate",PaymentRoutes)
 app.use("/api/admin/mail",emailRoute)
 app.use("/api/dashboard",dashboardRoutes)
 
-
 // Local 
 // MOngoURI = process.env.MONGO_URI ||
 // console.log(process.env.MONGO_URI || "mongod://localhost:27017/kkcDb");
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
+
   console.log("Mongodb Connected Successfully!!");
   app.listen(process.env.PORT,"0.0.0.0",()=>{
       console.log(`Server Is running on port http://localhost:${process.env.PORT}`)

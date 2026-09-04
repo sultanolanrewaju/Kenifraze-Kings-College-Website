@@ -1,4 +1,5 @@
 // src/components/layout/Sidebar.jsx
+import img from "../layout/compressor.jpeg"
 import {
   LayoutDashboard,
   Users,
@@ -38,8 +39,9 @@ export default function Sidebar({ activePage, onNavigate, mobileOpen, onCloseMob
       >
         <div className="flex items-center justify-between border-b border-white/10 px-5 py-5">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold/20 text-gold-soft">
-              <ShieldCheck size={18} />
+            <span className="flex h-9 w-9 items-center justify-center ">
+              {/* <ShieldCheck size={18} /> */}
+              <img src={img}className="w-full  rounded-full"  alt="" srcset="" />
             </span>
             <div className="leading-tight">
               <p className="font-display text-sm font-semibold tracking-wide">
@@ -61,6 +63,12 @@ export default function Sidebar({ activePage, onNavigate, mobileOpen, onCloseMob
           {NAV_ITEMS.map(({ key, label, icon: Icon }) => {
             const isActive = activePage === key;
             return (
+    //            --primary: #34345B;     
+    // --accent: #F55A28;       
+    // --white: #FFFFFF;        
+    // --light: #F5F6FA;        
+    // --text: #2B2B2B;        
+    // --btn: #0A2342;
               <button
                 key={key}
                 onClick={() => onNavigate(key)}

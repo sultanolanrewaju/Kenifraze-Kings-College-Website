@@ -18,7 +18,7 @@ export const getOneEvent = async(req,res)=>{
   try {
   
       const Id = req.params.id;
-      console.log(Id);
+      // console.log(Id);
       
     const FoundEvent = await Event.findOne({_id:Id})
     if (!FoundEvent) {

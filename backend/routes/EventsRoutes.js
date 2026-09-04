@@ -1,4 +1,5 @@
 import express from "express"
+import AdminRoute from "./AdminRoute.js"
 import {  getEvent, getOneEvent, postEvent, putEvent,patchEvent,deleteOneEvent,deleteAllEvent, } from "../controller/eventController.js";
 import upload from "../middlewares/uploadMiddlewares.js"
 
@@ -14,7 +15,7 @@ router.delete("/",deleteAllEvent)
 router.delete("/:id",deleteOneEvent)
 
 
-router.get("/",getEvent)
+router.get("/",AdminRoute,getEvent)
 
 router.get("/:id",getOneEvent)
 

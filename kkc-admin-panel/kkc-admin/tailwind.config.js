@@ -16,7 +16,7 @@ export default {
           card: "#FFFFFF",
         },
         gold: {
-          DEFAULT: "#B8902E",
+          DEFAULT: "##F55A28",
           soft: "#D9BE7E",
           muted: "#8C6C1F",
         },

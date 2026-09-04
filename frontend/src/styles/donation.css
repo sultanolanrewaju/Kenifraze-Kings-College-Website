@@ -650,10 +650,10 @@
                 /* PopUP */
         .pop-up{
             background: rgb(211, 208, 208);
-            margin-left:70px;
+            margin-left:50px;
             border-radius:10px;
-            width:300px;
-            height:300px;
+            width:350px;
+            height:350px;
         }
         .pop-up h1{
             font-size: 41px;
@@ -682,3 +682,21 @@
             border-radius:10px;
         }
         }
+         @media (max-width: 375px){
+              .pop-up{
+            background: rgb(211, 208, 208);
+            margin-left:10px;
+            border-radius:10px;
+            width:350px;
+            height:350px;
+        }
+          @media (max-width: 320px){
+              .pop-up{
+            background: rgb(211, 208, 208);
+            margin-left:10px;
+            border-radius:10px;
+            width:300px;
+            height:350px;
+        }
+    }
+}

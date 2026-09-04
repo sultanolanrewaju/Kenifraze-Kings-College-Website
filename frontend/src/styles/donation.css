@@ -405,7 +405,48 @@
         .kkcf-tier-btn-featured:hover {
             background-color: var(--kkcf-secondary-hover);
         }
-
+        /* PopUP */
+        .pop-up{
+            background: rgb(211, 208, 208);
+            /* position:absolute; */
+            margin-top:25px;
+            margin-left:35%;
+            border-radius:10px;
+            width: 400px;
+            height: 400px;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+            overflow: hidden;
+        }
+        .pop-up h1{
+            font-size: 41px;
+            text-align: center;
+            font-weight:600;
+            text-align: center;
+        }
+        .pop-up h2{
+            padding-bottom: 5px;
+            text-align: center;
+            font-size:25px;
+            font-weight: bold;
+        }
+        .pop-up p{
+            text-align: center;
+            font-size: 18px;
+        }
+        .number{
+            background: gray;
+            width: 190px;
+            height:40px;
+            padding-top:10px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius:10px;
+        }
         /* CHECKOUT FORM */
         .form-heading{
             text-align: center;
@@ -595,6 +636,10 @@
             .kkcf-stats-grid { grid-template-columns: repeat(2, 1fr); }
             .kkcf-needs-layout { grid-template-columns: 1fr; gap: 40px; }
             .kkcf-tiers-grid { grid-template-columns: repeat(2, 1fr); }
+            .pop-up{
+            background: rgb(211, 208, 208);
+            margin-left:25%;
+            }
         }
         @media (max-width: 480px) {
             .kkcf-stats-grid { grid-template-columns: 1fr; }
@@ -602,4 +647,38 @@
             .kkcf-tiers-grid { grid-template-columns: 1fr; }
             .kkcf-form-row { grid-template-columns: 1fr; }
             .kkcf-hero-buttons { flex-direction: column; }
+                /* PopUP */
+        .pop-up{
+            background: rgb(211, 208, 208);
+            margin-left:70px;
+            border-radius:10px;
+            width:300px;
+            height:300px;
+        }
+        .pop-up h1{
+            font-size: 41px;
+            text-align: center;
+            font-weight:600;
+            text-align: center;
+        }
+        .pop-up h2{
+            padding-bottom: 5px;
+            text-align: center;
+            font-size:25px;
+            font-weight: bold;
+        }
+        .pop-up p{
+            text-align: center;
+            font-size: 18px;
+        }
+        .number{
+            background: gray;
+            width: 190px;
+            height:40px;
+            padding-top:10px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius:10px;
+        }
         }

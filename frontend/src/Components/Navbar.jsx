@@ -29,6 +29,7 @@ const Navbar = () => {
                 <li><Link to="/events" onClick={() => setToggle(true)}>Events</Link></li>
                 <li><Link to="/academics" onClick={() => setToggle(true)}>Academics</Link></li>
                 <li><Link to="/about" onClick={() => setToggle(true)}>About</Link></li>
+                <li><Link to="/contact" onClick={() => setToggle(true)}>Contact Us</Link></li>
                 <li className='hider'><Link to="/donation" onClick={() => setToggle(true)}>Donation</Link></li>
             </ul>
 

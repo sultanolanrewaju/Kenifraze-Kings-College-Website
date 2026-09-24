@@ -7,6 +7,7 @@ import Academics from "./Pages/Academics"
 import Event from "./Pages/Event"
 import Donation from "./Pages/Donation"
 import DonationForm from "./Components/DonationForm"
+import ContactPage from "./Pages/ContactPage"
 import VerifyDonation from "./Pages/VerifyDonation"
 import NotFound from "./Components/NotFound"
 import PopUp from "./Components/PopUp"
@@ -33,6 +34,7 @@ function App() {
       <Route path="/about" element={ <About/>}/>
       <Route path="/academics" element={ <Academics/>}/>
       <Route path="/events" element={ <Event/>}/>
+      <Route path="/contact" element={ <ContactPage/>}/>
       <Route path="/donation" element={ <Donation/>}/>
       {/* <Route path="/donate" element={<DonationForm/>}/> */}
       <Route path="/donate" element={<PopUp/>}/>

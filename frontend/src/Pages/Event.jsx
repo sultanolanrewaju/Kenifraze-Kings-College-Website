@@ -8,8 +8,11 @@ import Footer from "../Components/Footer"
 import Novalue from "../Components/Novalue.jsx"
 import Loader from "../Components/Loader.jsx"
 import "../styles/App.css"
+import { Title } from "../Title.js"
 
 const Event = () => {
+ Title(" Events | Kenifraze Kings College")
+
     // const [data, setData] = useState([])
     const [loading, setLoading] = useState(true) // 1. Start loading as true initially
 

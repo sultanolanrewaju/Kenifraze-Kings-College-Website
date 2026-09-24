@@ -9,10 +9,14 @@ import Hero from "../Components/Hero"
 import InstructorCard from "../Components/InstructorCard"
 import Novalue from "../Components/Novalue.jsx"
 import Loader from "../Components/Loader.jsx"
+import { Title } from "../Title.js"
+
 // Styles
 import "../styles/About.css";
 
 const About = () => {
+Title("About Us | Our Vision and Values | Kenifraze Kings College")
+
     // Making API Calls
     const {
         data: instructors,

@@ -8,7 +8,7 @@ const Footer = ()=>{
     <p>&copy; 2026 KENIFRAZE KINGS COLLEGE. All Rights Reserved.</p>
     <p>33 Oshogbo Street, Lagos, Nigeria</p>
     <p>+234 813-4541356 | 08024420091</p>
-    <p>Developed By: Sultan</p>
+    <p>Developed By: <a href="https://sultanresume.netlify.app" target="blank" style={{textDecoration:"none",color:"#0088FF"}}>Sultan</a></p>
 </footer>
 
 </>

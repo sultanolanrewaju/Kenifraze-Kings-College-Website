@@ -4,6 +4,8 @@ import { Link } from "react-router-dom"
 // Icons
 import { AiOutlineFork,AiOutlineBook } from "react-icons/ai"
 
+import { Title } from "../Title"
+
 // Components
 import Navbar from "../Components/Navbar"
 import NeedCard from "../Components/NeedCard"
@@ -16,6 +18,7 @@ import Footer from "../Components/Footer"
 import  "../styles/donation.css"
 
 const Donation = () => {
+    Title("Change a Child's Life Today | Kenifraze Kings College")
 // Variable
  const link = import.meta.env.VITE_GO_FUND_ME;
 

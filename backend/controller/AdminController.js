@@ -16,7 +16,7 @@ export const loginAdmin = async(req,res)=>{
     if(!isPassword){
         return res.status(400).json({message:"Invalid Password"})
     }
-    //   cREATE toke
+    //   Create token
     
     const token =jwt.sign(
         // Payload

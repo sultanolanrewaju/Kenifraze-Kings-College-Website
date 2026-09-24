@@ -8,12 +8,17 @@ import Hero from "../Components/Hero"
 import Card from "../Components/Card"
 import Eventcard from "../Components/Eventcard"
 import Contact from "../Components/Contact"
-import Footer from "../Components/Footer"
+import Footer from "../Components/Footer.jsx"
 import Floating from "../Components/Floating"
 import Entertain from "../Components/Entertain"
 import Loader from "../Components/Loader"
 import Novalue from "../Components/Novalue"
+
+// Change Title
+import { Title } from "../Title.js"
 const Home = ()=>{
+    // Change Page Title
+    Title("Kenifraze Kings College | Where Education Meets Talent.")
     const [category,setCategory] = useState("")
 // Set Loading State
 const [loading,setLoading] = useState(true)

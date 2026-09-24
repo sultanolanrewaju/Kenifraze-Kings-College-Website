@@ -8,8 +8,11 @@ import Card from "../Components/Card"
 import "../styles/App.css"
 import Novalue from "../Components/Novalue.jsx"
 import Loader from "../Components/Loader.jsx"
+import { Title } from "../Title.js"
 
 const Academics = ()=>{
+Title("Academics & Curriculum | Kenifraze Kings College")
+
   const [category,setCategory] =useState("")
      // Tanstack query APi calls
     const {
